@@ -1,12 +1,8 @@
-import { defaultLocale, getDictionary, localePath } from "@/i18n";
+import { getDictionary } from "@/i18n";
+import { NotFoundContent } from "@/components/sections/NotFoundContent";
 
+/** notFound() inside a locale route; unmatched URLs are served by app/global-not-found.tsx with the same body. */
 export default async function NotFound() {
-  const dict = await getDictionary(defaultLocale);
-  return (
-    <main>
-      <h1>{dict.notFound.title}</h1>
-      <p>{dict.notFound.body}</p>
-      <a href={localePath(defaultLocale, "/")}>{dict.notFound.back}</a>
-    </main>
-  );
+  const [pl, en] = await Promise.all([getDictionary("pl"), getDictionary("en")]);
+  return <NotFoundContent pl={pl} en={en} />;
 }
