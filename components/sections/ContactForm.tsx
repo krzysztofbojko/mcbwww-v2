@@ -6,7 +6,8 @@ import { Check, RotateCw } from "lucide-react";
 import type { Dictionary, Locale } from "@/i18n";
 // Narrow, client-safe module (imports only content/services), never the "@/content" barrel.
 import { DEFAULT_TOPIC, LIMITS, contactApiErrors, isValidEmail, resolveTopic, type ContactApiError } from "@/lib/contact";
-import { Button, cn } from "@/components/ui";
+import { Button } from "@/components/ui/Button";
+import { cn } from "@/components/ui/cn";
 
 export interface ContactTopicOption {
   id: string;
@@ -191,12 +192,19 @@ export function ContactForm({
   return (
     <form
       ref={formRef}
+      // Without JS the browser submits natively: POST keeps personal data out of the URL (the page ignores the body).
+      method="post"
       noValidate
       onSubmit={onSubmit}
       aria-label={s.formLabel}
       aria-busy={sending}
       className="grid grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-2"
     >
+      <noscript className="block md:col-span-2">
+        <p className="m-0 border border-paper/60 bg-burgundy-deep px-4 py-3 text-ui text-paper">
+          {fill(s.noscript)}
+        </p>
+      </noscript>
       <FieldShell id={id("message")} label={s.messageLabel} error={fieldErrors.message} full>
         <textarea
           id={id("message")}

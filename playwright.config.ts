@@ -18,6 +18,7 @@ export default defineConfig({
     timeout: 300_000,
     // Production mode needs a captcha secret, otherwise /api/captcha answers 503 on the contact page.
     // SITE_URL is required by a production build (it is baked into canonical URLs, sitemap and robots).
-    env: { CAPTCHA_SECRET: "e2e-only-captcha-secret", SITE_URL: "http://localhost:3000" },
+    // RESEND_API_KEY is forced empty so the contact e2e test always ends in the „not_configured” answer.
+    env: { CAPTCHA_SECRET: "e2e-only-captcha-secret", SITE_URL: "http://localhost:3000", RESEND_API_KEY: "" },
   },
 });

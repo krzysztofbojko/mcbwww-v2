@@ -225,6 +225,7 @@
     "consent": "I agree to the processing of my data in order to answer this enquiry. The data controller is UKSW.",
     "submit": "Send enquiry",
     "sending": "Sending…",
+    "noscript": "The form needs JavaScript. Write to {email} or call {phone}.",
     "sendNote": "Enquiries go to the MCB office. An expert answers, not a machine.",
     "successTitle": "Thank you, your enquiry has been sent.",
     "successBody": "The MCB office will pass it to the expert for the right service. The answer will come to {email}.",

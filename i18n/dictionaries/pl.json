@@ -225,6 +225,7 @@
     "consent": "Zgadzam się na przetwarzanie danych w celu odpowiedzi na zapytanie. Administratorem danych jest UKSW.",
     "submit": "Wyślij zapytanie",
     "sending": "Wysyłanie…",
+    "noscript": "Formularz wymaga włączonego JavaScriptu. Napisz na {email} lub zadzwoń: {phone}.",
     "sendNote": "Zapytanie trafia do biura MCB. Odpowiada ekspert, nie automat.",
     "successTitle": "Dziękujemy, zapytanie zostało wysłane.",
     "successBody": "Biuro MCB przekaże je ekspertowi właściwej usługi. Odpowiedź przyjdzie na adres {email}.",
