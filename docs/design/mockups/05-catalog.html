@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>05 Katalog aparatury — MCB UKSW</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .head { padding: var(--s-8) 0 var(--s-6); align-items: end; row-gap: var(--s-5); }
+  .head h1 { grid-column: 1 / 8; font-size: var(--text-display-l); line-height: var(--lh-display); }
+  .head p { grid-column: 8 / -1; color: var(--ink-muted); max-width: 30em; }
+
+  .search { display: flex; align-items: center; gap: var(--s-4); border-bottom: 2px solid var(--ink); padding: var(--s-3) 0; margin-bottom: var(--s-7); }
+  .search svg { width: 22px; height: 22px; flex: none; }
+  .search input { flex: 1; border: 0; background: none; font: 400 clamp(1.25rem, 2vw, 1.625rem)/1.3 var(--font-display); color: var(--ink); padding: 6px 0; outline: none; }
+  .search input::placeholder { color: #8C857B; }
+  .search kbd { font-family: var(--font-mono); font-size: 12px; color: var(--steel); border: 1px solid var(--rule); padding: 2px 6px; }
+
+  .body { align-items: start; padding-bottom: var(--s-10); }
+  .filters { grid-column: 1 / 4; position: sticky; top: var(--s-5); }
+  .filters fieldset { border: 0; margin: 0 0 var(--s-7); padding: 0; }
+  .filters legend { font-weight: 600; font-size: 0.9375rem; margin-bottom: var(--s-3); padding: 0; }
+  .opt { display: grid; grid-template-columns: 18px 1fr auto; gap: var(--s-3); align-items: baseline; padding: 7px 0; font-size: 0.9375rem; cursor: pointer; }
+  .opt input { appearance: none; width: 14px; height: 14px; margin: 0; border: 1px solid var(--ink); transform: translateY(2px); background: var(--paper); }
+  .opt input[type=radio] { border-radius: 50%; }
+  .opt input:checked { background: var(--burgundy); border-color: var(--burgundy); box-shadow: inset 0 0 0 3px var(--paper); }
+  .opt .spec { font-size: 13px; }
+  .opt .cnum { margin-right: 6px; }
+  .opt.on { color: var(--burgundy); }
+  .switch { display: flex; align-items: center; justify-content: space-between; font-size: 0.9375rem; padding: 7px 0; }
+  .switch i { width: 34px; height: 18px; background: var(--rule); position: relative; }
+  .switch i::after { content: ""; position: absolute; left: 3px; top: 3px; width: 12px; height: 12px; background: var(--paper); }
+
+  .results { grid-column: 4 / -1; padding-left: var(--s-6); }
+  .bar { display: flex; align-items: center; gap: var(--s-4); flex-wrap: wrap; padding-bottom: var(--s-4); }
+  .chip { display: inline-flex; align-items: center; gap: var(--s-2); font-size: var(--text-small); padding: 6px 10px; background: var(--ink); color: var(--paper); }
+  .chip svg { width: 10px; height: 10px; }
+  .bar .count { font-size: 0.9375rem; }
+  .bar .sort { margin-left: auto; font-size: var(--text-small); color: var(--ink-muted); }
+  .bar .sort b { font-weight: 500; color: var(--ink); }
+
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; font-weight: 400; font-size: var(--text-small); color: var(--ink-muted); padding: 0 var(--s-4) var(--s-2) 0; border-bottom: 1px solid var(--ink); }
+  td { padding: 16px var(--s-4) 16px 0; border-bottom: var(--hair); vertical-align: top; }
+  td.name { width: 44%; }
+  td.name a { text-decoration: none; font-size: 1.0625rem; line-height: 1.35; }
+  td.name a:hover { color: var(--burgundy); text-decoration: underline; }
+  td.name small { display: block; font-size: var(--text-small); color: var(--ink-muted); margin-top: 3px; }
+  td.specs { width: 30%; }
+  td.specs .spec { display: block; color: var(--ink); line-height: 1.6; }
+  td.svc { font-size: var(--text-small); color: var(--ink-muted); }
+  td.go { text-align: right; padding-right: 0; width: 24px; color: var(--burgundy); }
+  tr.flag td { background: var(--paper-deep); }
+  td:first-child, th:first-child { padding-left: var(--s-4); }
+  tr.flag td.go { padding-right: var(--s-4); }
+  .tag { display: inline-block; font-size: 12px; line-height: 1; padding: 3px 6px; color: var(--paper); background: var(--burgundy); margin-right: var(--s-3); vertical-align: 1px; }
+  .mobile-filters { display: none; }
+
+  @media (max-width: 900px) {
+    .head h1, .head p { grid-column: 1 / -1; }
+    .filters { display: none; }
+    .results { grid-column: 1 / -1; padding-left: 0; }
+    .mobile-filters { display: flex; gap: var(--s-3); margin-bottom: var(--s-4); }
+    .mobile-filters .btn { padding: 11px 16px; }
+  }
+  @media (max-width: 760px) {
+    .head { padding: var(--s-6) 0 var(--s-4); }
+    .search { margin-bottom: var(--s-5); }
+    .search kbd { display: none; }
+    .search input { font-size: 1.0625rem; }
+    .bar .sort { margin-left: 0; width: 100%; }
+    thead { display: none; }
+    tr { display: block; border-bottom: var(--hair); padding: 14px 0; position: relative; }
+    tr.flag { background: var(--paper-deep); padding: 14px var(--s-4); margin: 0 calc(-1 * var(--gutter)); padding-left: var(--gutter); padding-right: var(--gutter); }
+    td { display: block; border: 0; padding: 0 !important; width: auto !important; background: none !important; }
+    td.specs { margin-top: var(--s-2); }
+    td.svc { margin-top: var(--s-2); }
+    td.go { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="nav">
+    <a class="wordmark" href="#"><b>MCB</b><span>Multidyscyplinarne Centrum Badawcze UKSW</span></a>
+    <a class="link" href="#">Usługi</a>
+    <a class="link" href="#" aria-current="page">Aparatura</a>
+    <a class="link" href="#">Eksperci</a>
+    <a class="link" href="#">Projekty</a>
+    <a class="link" href="#">O centrum</a>
+    <span class="lang">PL / EN</span>
+    <a class="btn btn-primary" href="#">Zapytaj o badanie</a>
+    <button class="menu">Menu <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h12M2 11h12"/></svg></button>
+  </header>
+
+  <div class="head grid">
+    <h1>Katalog aparatury</h1>
+    <p>56 pozycji w czterech klastrach. Każdy aparat prowadzi do usługi, w której pracuje, i do osoby, która za niego odpowiada.</p>
+  </div>
+
+  <label class="search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
+    <input type="search" placeholder="Szukaj po nazwie lub parametrze, np. SEM, tomograf, 3500°C">
+    <kbd>/</kbd>
+  </label>
+
+  <div class="body grid">
+    <aside class="filters">
+      <fieldset>
+        <legend>Klaster</legend>
+        <label class="opt"><input type="radio" name="k"><span>Wszystkie</span><span class="spec">56</span></label>
+        <label class="opt"><input type="radio" name="k"><span><span class="cnum">01</span>Inżynieria Materiałowa i Wytwarzanie</span><span class="spec">22</span></label>
+        <label class="opt on"><input type="radio" name="k" checked><span><span class="cnum">02</span>Analiza i Badania Materiałowe</span><span class="spec">12</span></label>
+        <label class="opt"><input type="radio" name="k"><span><span class="cnum">03</span>Technologie Cyfrowe i VR</span><span class="spec">12</span></label>
+        <label class="opt"><input type="radio" name="k"><span><span class="cnum">04</span>Środowisko i Społeczeństwo</span><span class="spec">10</span></label>
+      </fieldset>
+      <fieldset>
+        <legend>Usługa</legend>
+        <label class="opt"><input type="checkbox"><span>Analiza Struktury i Składu Fazowego</span><span class="spec">4</span></label>
+        <label class="opt"><input type="checkbox"><span>Badania Właściwości Mechanicznych</span><span class="spec">3</span></label>
+        <label class="opt"><input type="checkbox"><span>Akwizycja Danych Dronami</span><span class="spec">5</span></label>
+      </fieldset>
+      <fieldset>
+        <legend>Pokaż</legend>
+        <div class="switch"><span>Tylko aparatura wiodąca</span><i></i></div>
+      </fieldset>
+    </aside>
+
+    <section class="results">
+      <div class="mobile-filters"><button class="btn btn-ghost">Filtry · 1</button><button class="btn btn-ghost">Sortuj</button></div>
+      <div class="bar">
+        <span class="chip"><span class="cnum" style="color:var(--burgundy-tint)">02</span> Analiza i Badania Materiałowe <svg viewBox="0 0 10 10" stroke="currentColor" stroke-width="1.5"><path d="M1 1l8 8M9 1 1 9"/></svg></span>
+        <span class="count">12 pozycji</span>
+        <span class="sort">Kolejność: <b>wiodąca najpierw</b></span>
+      </div>
+
+      <table>
+        <thead><tr><th>Aparat</th><th>Kluczowe parametry</th><th>Usługa</th><th></th></tr></thead>
+        <tbody>
+          <tr class="flag"><td class="name"><a href="#">Mikrotomograf rentgenowski Nikon XT H 225 ST 2x</a><small><span class="tag">wiodący</span>Nikon</small></td><td class="specs"><span class="spec">napięcie do 225 kV</span><span class="spec">rozdzielczość submikronowa</span></td><td class="svc">Analiza Struktury i Składu Fazowego</td><td class="go"><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></td></tr>
+          <tr class="flag"><td class="name"><a href="#">Skaningowy mikroskop elektronowy Axia ChemiSEM</a><small><span class="tag">wiodący</span>Thermo Fisher Scientific</small></td><td class="specs"><span class="spec">zintegrowany detektor EDS</span><span class="spec">tryb niskiej próżni</span></td><td class="svc">Analiza Struktury i Składu Fazowego</td><td class="go"><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></td></tr>
+          <tr class="flag"><td class="name"><a href="#">Platforma bezzałogowa DJI Matrice 300 RTK</a><small><span class="tag">wiodący</span>DJI</small></td><td class="specs"><span class="spec">dokładność RTK 1 cm</span><span class="spec">Zenmuse P1 45 MP</span></td><td class="svc">Akwizycja Danych Dronami</td><td class="go"><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></td></tr>
+          <tr><td class="name"><a href="#">Maszyna wytrzymałościowa Cometech QC-505M2 50 kN</a><small>Cometech</small></td><td class="specs"><span class="spec">siła do 50 kN</span><span class="spec">temp. do 1000°C</span></td><td class="svc">Badania Właściwości Mechanicznych</td><td class="go"><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></td></tr>
+          <tr><td class="name"><a href="#">Dyfraktometr rentgenowski Bruker D2 Phaser</a><small>Bruker</small></td><td class="specs"><span class="spec">dyfrakcja rentgenowska XRD</span></td><td class="svc">Analiza Struktury i Składu Fazowego</td><td class="go"><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></td></tr>
+          <tr><td class="name"><a href="#">Optyczny mikroskop pomiarowy z funkcją profilometru Keyence VHX-7000</a><small>Keyence</small></td><td class="specs"><span class="spec">optyka 4K / 3D</span></td><td class="svc">Analiza Struktury i Składu Fazowego</td><td class="go"><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></td></tr>
+          <tr><td class="name"><a href="#">System do badań próbek miniaturowych TTS 190 Small Punch Test</a></td><td class="specs"><span class="spec">mikropróbki SPT</span></td><td class="svc">Badania Właściwości Mechanicznych</td><td class="go"><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></td></tr>
+          <tr><td class="name"><a href="#">Twardościomierz PIIS 3000</a></td><td class="specs"><span class="spec">pomiary nieniszczące NDT</span></td><td class="svc">Badania Właściwości Mechanicznych</td><td class="go"><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></td></tr>
+          <tr><td class="name"><a href="#">Kamera pełnoklatkowa fotogrametryczna Zenmuse P1 oraz kamera Zenmuse X7</a></td><td class="specs"><span class="spec">matryca pełnoklatkowa 45 MP</span></td><td class="svc">Akwizycja Danych Dronami</td><td class="go"><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></td></tr>
+          <tr><td class="name"><a href="#">Kamera multispektralna Micasense Altum-PT</a></td><td class="specs"><span class="spec">kamera multispektralna</span></td><td class="svc">Akwizycja Danych Dronami</td><td class="go"><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></td></tr>
+          <tr><td class="name"><a href="#">Zestaw miernictwa precyzyjnego</a><small>Trimble · Spectra SP85</small></td><td class="specs"><span class="spec">geodezja GNSS RTK</span></td><td class="svc">Akwizycja Danych Dronami</td><td class="go"><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></td></tr>
+          <tr><td class="name"><a href="#">Oprogramowanie analityczne</a><small>Pix4D · Trimble Business Center</small></td><td class="specs"><span class="spec">fotogrametria 3D</span></td><td class="svc">Akwizycja Danych Dronami</td><td class="go"><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></td></tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</div>
+</body>
+</html>

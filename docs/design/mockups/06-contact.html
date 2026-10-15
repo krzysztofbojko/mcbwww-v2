@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>06 Kontakt — MCB UKSW</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .building { margin: 0; }
+  .building img { width: 100%; height: clamp(260px, 36vw, 520px); object-fit: cover; object-position: 50% 62%; }
+
+  .field { background: var(--burgundy); color: var(--paper); padding: var(--s-9) 0 var(--s-10); }
+  .field .grid { row-gap: var(--s-8); }
+  .intro { grid-column: 1 / 6; }
+  .intro h1 { font-size: var(--text-display-l); line-height: var(--lh-display); }
+  .intro p.lede { margin-top: var(--s-5); color: var(--burgundy-tint); font-size: var(--text-statement); line-height: 1.42; max-width: 22em; }
+  .intro dl { margin: var(--s-8) 0 0; display: grid; grid-template-columns: 6.5em 1fr; gap: var(--s-4) var(--s-4); border-top: 1px solid rgba(244,241,235,.35); padding-top: var(--s-5); }
+  .intro dt { color: var(--burgundy-tint); font-size: 0.9375rem; }
+  .intro dd { margin: 0; }
+  .intro dd a { color: var(--paper); }
+  .intro .big { font-family: var(--font-display); font-size: 1.5rem; line-height: 1.2; }
+
+  form { grid-column: 7 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-6) var(--s-5); align-content: start; }
+  .f { display: flex; flex-direction: column; gap: var(--s-2); }
+  .f.full { grid-column: 1 / -1; }
+  .f label { font-size: 0.9375rem; color: var(--burgundy-tint); }
+  .f input, .f textarea, .f select { font: 400 1.0625rem/1.4 var(--font-sans); color: var(--paper); background: transparent; border: 0; border-bottom: 1px solid rgba(244,241,235,.6); border-radius: 0; padding: 8px 0 10px; appearance: none; }
+  .f textarea { min-height: 7.5em; resize: vertical; border: 1px solid rgba(244,241,235,.6); padding: 12px 14px; }
+  .f ::placeholder { color: rgba(244,241,235,.62); }
+  .f select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23F4F1EB' stroke-width='1.5'%3E%3Cpath d='M3 6l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 2px center; background-size: 16px; }
+  .f .hint { font-size: var(--text-small); color: var(--burgundy-tint); }
+  .consent { grid-column: 1 / -1; display: grid; grid-template-columns: 18px 1fr; gap: var(--s-3); font-size: var(--text-small); color: var(--burgundy-tint); line-height: 1.45; }
+  .consent span:first-child { width: 16px; height: 16px; border: 1px solid var(--paper); margin-top: 2px; }
+  .send { grid-column: 1 / -1; display: flex; align-items: center; gap: var(--s-5); }
+  .btn-paper { background: var(--paper); color: var(--burgundy); }
+  .btn-paper:hover { background: #fff; }
+  .send p { font-size: var(--text-small); color: var(--burgundy-tint); }
+
+  .foot .cols > div:nth-child(1) { grid-column: 1 / 5; }
+  .foot .cols > div:nth-child(2) { grid-column: 6 / 9; }
+  .foot .cols > div:nth-child(3) { grid-column: 10 / -1; }
+  .foot .cols p { margin-bottom: var(--s-3); }
+  .foot ul { list-style: none; margin: 0; padding: 0; }
+  .foot ul a { text-decoration: none; }
+
+  @media (max-width: 760px) {
+    .field { padding: var(--s-8) 0 var(--s-9); }
+    .intro, form { grid-column: 1 / -1; }
+    form { grid-template-columns: 1fr; }
+    .intro dl { grid-template-columns: 1fr; gap: 0; }
+    .intro dd { margin-bottom: var(--s-4); }
+    .send { flex-direction: column; align-items: stretch; }
+    .send .btn { justify-content: space-between; }
+    .foot .big { font-size: 17vw; margin-top: var(--s-8); }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="nav">
+    <a class="wordmark" href="#"><b>MCB</b><span>Multidyscyplinarne Centrum Badawcze UKSW</span></a>
+    <a class="link" href="#">Usługi</a>
+    <a class="link" href="#">Aparatura</a>
+    <a class="link" href="#">Eksperci</a>
+    <a class="link" href="#">Projekty</a>
+    <a class="link" href="#">O centrum</a>
+    <span class="lang">PL / EN</span>
+    <a class="btn btn-primary" href="#">Zapytaj o badanie</a>
+    <button class="menu">Menu <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h12M2 11h12"/></svg></button>
+  </header>
+</div>
+
+<figure class="building">
+  <img src="../../../public/images/tlo-glowna.jpg" alt="Budynek Multidyscyplinarnego Centrum Badawczego UKSW w Dziekanowie Leśnym">
+</figure>
+
+<section class="field">
+  <div class="wrap">
+    <div class="grid">
+      <div class="intro">
+        <h1>Opisz problem. Resztę dobierzemy.</h1>
+        <p class="lede">Nie musisz znać nazwy metody ani aparatu. Napisz, co chcesz zbadać, a zapytanie trafi do eksperta właściwej usługi.</p>
+        <dl>
+          <dt>Adres</dt><dd class="big">ul. Marii Konopnickiej 1<br>05-092 Dziekanów Leśny</dd>
+          <dt>Telefon</dt><dd><a href="#">+48 22 380 43 25</a></dd>
+          <dt>E-mail</dt><dd><a href="#">mcb@uksw.edu.pl</a></dd>
+        </dl>
+      </div>
+
+      <form>
+        <div class="f full">
+          <label for="q">Co chcesz zbadać lub wytworzyć?</label>
+          <textarea id="q" placeholder="Np. pęknięcie wału ze stali 42CrMo4 po 8 miesiącach pracy, potrzebujemy przyczyny i raportu."></textarea>
+        </div>
+        <div class="f full">
+          <label for="s">Usługa</label>
+          <select id="s"><option>Wytwarzanie Przyrostowe Metali (Druk 3D)</option></select>
+          <span class="hint">Uzupełnione na podstawie strony, z której przyszedłeś. Możesz zostawić „Nie wiem”.</span>
+        </div>
+        <div class="f"><label for="n">Imię i nazwisko</label><input id="n" value="Anna Kowalska"></div>
+        <div class="f"><label for="c">Firma</label><input id="c" placeholder="Nazwa firmy lub instytucji"></div>
+        <div class="f"><label for="e">E-mail</label><input id="e" placeholder="adres@firma.pl"></div>
+        <div class="f"><label for="t">Telefon <span class="hint">(opcjonalnie)</span></label><input id="t" placeholder="+48"></div>
+        <label class="consent"><span></span><span>Zgadzam się na przetwarzanie danych w celu odpowiedzi na zapytanie. Administratorem danych jest UKSW.</span></label>
+        <div class="send">
+          <button class="btn btn-paper" type="button">Wyślij zapytanie <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button>
+          <p>Odpowiada ekspert, nie automat.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <p>Multidyscyplinarne Centrum Badawcze<br><span class="muted">Uniwersytet Kardynała Stefana Wyszyńskiego w Warszawie</span></p>
+        <p class="muted">ul. Marii Konopnickiej 1, 05-092 Dziekanów Leśny</p>
+      </div>
+      <div>
+        <ul><li><a href="#">Usługi</a></li><li><a href="#">Katalog aparatury</a></li><li><a href="#">Eksperci</a></li><li><a href="#">Projekty i publikacje</a></li></ul>
+      </div>
+      <div>
+        <p><a href="#">+48 22 380 43 25</a><br><a href="#">mcb@uksw.edu.pl</a></p>
+        <p class="muted">PL / EN</p>
+      </div>
+    </div>
+    <p class="big">MCB UKSW</p>
+  </div>
+</footer>
+</body>
+</html>

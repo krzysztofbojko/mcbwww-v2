@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>03 Usługa — MCB UKSW</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .crumb { font-size: var(--text-small); color: var(--ink-muted); padding: var(--s-5) 0 0; display: flex; gap: var(--s-3); flex-wrap: wrap; }
+  .crumb a { text-decoration: none; }
+  .crumb .cnum { font-size: 0.9375rem; }
+
+  .top { padding: var(--s-7) 0 var(--s-9); row-gap: var(--s-6); }
+  .top .plate { grid-column: 1 / 5; }
+  .top .plate img { aspect-ratio: 420 / 596; }
+  .top .body { grid-column: 6 / -1; }
+  .top h1 { font-size: var(--text-display-l); line-height: var(--lh-display); max-width: 12em; }
+  .top .lede { font-size: var(--text-statement); line-height: 1.42; margin-top: var(--s-6); max-width: 30em; }
+
+  .scope { margin-top: var(--s-8); }
+  .scope h2, .eq h2, .who h2 { font-size: var(--text-display-m); line-height: 1.1; }
+  .scope ol { margin: var(--s-5) 0 0; padding: 0; list-style: none; counter-reset: o; border-top: 1px solid var(--ink); }
+  .scope li { counter-increment: o; display: grid; grid-template-columns: 3rem 1fr; padding: 14px 0; border-bottom: var(--hair); max-width: 52em; }
+  .scope li::before { content: counter(o); font-family: var(--font-mono); font-size: var(--text-spec); color: var(--steel); padding-top: 3px; }
+
+  /* path bar: the three steps of the visit, always one click away */
+  .path { position: sticky; top: 0; z-index: 2; background: var(--ink); color: var(--paper); }
+  .path .wrap { display: flex; align-items: center; gap: var(--s-6); min-height: 60px; font-size: 0.9375rem; }
+  .path a { text-decoration: none; color: #B9B2A7; }
+  .path a[aria-current] { color: var(--paper); text-decoration: underline; text-decoration-color: var(--burgundy-tint); text-underline-offset: 0.45em; }
+  .path .btn { margin-left: auto; }
+  .path .spec { color: #9AA6B0; margin-left: 6px; }
+
+  .eq { background: var(--steel-wash); padding: var(--s-9) 0; }
+  .eq .lead { align-items: start; row-gap: var(--s-6); }
+  .eq .lead > h2 { grid-column: 1 / 5; }
+  .eq .lead > p { grid-column: 6 / -1; color: var(--ink-muted); max-width: 34em; }
+  .flag { margin-top: var(--s-8); row-gap: var(--s-5); border-top: 1px solid var(--ink); padding-top: var(--s-6); }
+  .flag .name { grid-column: 1 / 6; }
+  .flag h3 { font-size: clamp(1.75rem, 3vw, 2.75rem); line-height: 1.05; }
+  .flag .name p { margin-top: var(--s-4); max-width: 24em; }
+  .flag .name .btn-link { display: inline-block; margin-top: var(--s-5); }
+  .flag .speclist { grid-column: 7 / -1; border-top: 0; }
+  .flag .speclist li { border-bottom-color: #BFC6CC; }
+  .flag .tag { font-size: var(--text-small); color: var(--steel); margin-bottom: var(--s-3); }
+
+  table { width: 100%; border-collapse: collapse; margin-top: var(--s-8); font-size: 0.9375rem; }
+  th { text-align: left; font-weight: 400; color: var(--ink-muted); font-size: var(--text-small); padding: 0 var(--s-4) var(--s-2) 0; border-bottom: 1px solid var(--ink); }
+  td { padding: 14px var(--s-4) 14px 0; border-bottom: 1px solid #BFC6CC; vertical-align: top; }
+  td:first-child { width: 46%; }
+  td .spec { color: var(--steel); }
+  td:last-child { text-align: right; white-space: nowrap; padding-right: 0; }
+  td a { color: var(--burgundy); }
+
+  .who { padding: var(--s-9) 0 var(--s-10); row-gap: var(--s-6); }
+  .who > h2 { grid-column: 1 / 5; }
+  .who .card { grid-column: 6 / -1; }
+  .who .person { font-family: var(--font-display); font-size: clamp(2rem, 3.6vw, 3.25rem); line-height: 1.04; letter-spacing: var(--track-display); }
+  .who .role { margin-top: var(--s-3); color: var(--ink-muted); }
+  .who dl { display: grid; grid-template-columns: 7em 1fr; gap: var(--s-3) var(--s-4); margin: var(--s-6) 0; padding: var(--s-5) 0; border-top: var(--hair); border-bottom: var(--hair); }
+  .who dt { color: var(--ink-muted); font-size: 0.9375rem; }
+  .who dd { margin: 0; }
+  .who .actions { display: flex; gap: var(--s-5); align-items: center; flex-wrap: wrap; }
+  .who .note { font-size: var(--text-small); color: var(--ink-muted); max-width: 30em; }
+
+  @media (max-width: 760px) {
+    .top { padding: var(--s-5) 0 var(--s-8); }
+    .top .plate { grid-column: 1 / -1; margin: 0 calc(-1 * var(--gutter)); }
+    .top .plate img { aspect-ratio: 3 / 2; object-position: 50% 70%; }
+    .top .plate figcaption { padding: 0 var(--gutter); }
+    .top .body { grid-column: 1 / -1; }
+    .scope { margin-top: var(--s-7); }
+    .scope li { grid-template-columns: 2rem 1fr; }
+    .path .wrap { gap: var(--s-4); overflow-x: auto; white-space: nowrap; }
+    .path .btn { display: none; }
+    .eq { padding: var(--s-8) 0; }
+    .eq .lead > h2, .eq .lead > p, .flag .name, .flag .speclist, .who > h2, .who .card { grid-column: 1 / -1; }
+    thead { display: none; }
+    tr { display: grid; grid-template-columns: 1fr auto; padding: 12px 0; border-bottom: 1px solid #BFC6CC; }
+    td { border: 0; padding: 0; width: auto !important; }
+    td:nth-child(1) { grid-column: 1 / -1; }
+    td:nth-child(2) { color: var(--ink-muted); font-size: var(--text-small); }
+    td:nth-child(3) { grid-column: 1; }
+    td:last-child { grid-column: 2; grid-row: 2 / span 2; align-self: end; }
+    .who { padding: var(--s-8) 0 var(--s-9); }
+    .who dl { grid-template-columns: 1fr; gap: 0; }
+    .who dd { margin-bottom: var(--s-3); }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="nav">
+    <a class="wordmark" href="#"><b>MCB</b><span>Multidyscyplinarne Centrum Badawcze UKSW</span></a>
+    <a class="link" href="#" aria-current="page">Usługi</a>
+    <a class="link" href="#">Aparatura</a>
+    <a class="link" href="#">Eksperci</a>
+    <a class="link" href="#">Projekty</a>
+    <a class="link" href="#">O centrum</a>
+    <span class="lang">PL / EN</span>
+    <a class="btn btn-primary" href="#">Zapytaj o badanie</a>
+    <button class="menu">Menu <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h12M2 11h12"/></svg></button>
+  </header>
+  <nav class="crumb" aria-label="Okruszki"><a href="#">Usługi</a><span>/</span><a href="#"><span class="cnum">01</span> Inżynieria Materiałowa i Wytwarzanie</a></nav>
+
+  <section class="top grid">
+    <figure class="plate">
+      <img src="../../../public/images/oferta/druk3d-metale.png" alt="Iskry nad złożem proszku podczas topienia laserowego">
+      <figcaption><span class="fig">Ryc. 1</span><span>Topienie laserowe w złożu proszku, PBF-LB.</span></figcaption>
+    </figure>
+    <div class="body">
+      <h1>Wytwarzanie Przyrostowe Metali (Druk 3D)</h1>
+      <p class="lede">Drukujemy części z metalu metodą topienia laserowego w złożu proszku: dobieramy parametry dla nowych stopów, kompozytów metal-ceramika i proszków dostarczonych przez Państwa.</p>
+
+      <div class="scope">
+        <h2>Zakres usługi</h2>
+        <ol>
+          <li>Projektowanie CAD obiektów oraz optymalizacja ich geometrii przy wykorzystaniu oprogramowania inżynierskiego (Siemens NX, Magics Materialise, ANSYS)</li>
+          <li>Optymalizacja parametrów procesu topienia laserowego w złożu proszku (PBF-LB) nowych stopów metali oraz kompozytów metal-ceramika</li>
+          <li>Prowadzenie procesów topienia laserowego w złożu proszku na urządzeniu wyposażonym w moduł grzewczy do 800°C, możliwość rozprowadzania nanoproszków</li>
+          <li>Opracowywanie parametrów procesu topienia laserowego na materiałach klientów oraz na potrzeby urządzeń produkcyjnych w zakładach przemysłowych</li>
+          <li>Modyfikacja powierzchni wytworzonych obiektów oraz ich charakteryzacja materiałowa (m.in. zgodność wymiarowa oraz obecność defektów)</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+</div>
+
+<nav class="path" aria-label="Na tej stronie">
+  <div class="wrap">
+    <a href="#" aria-current="true">Usługa</a>
+    <a href="#eq">Aparatura<span class="spec">4</span></a>
+    <a href="#who">Ekspert</a>
+    <a class="btn btn-primary" href="#">Zapytaj o tę usługę</a>
+  </div>
+</nav>
+
+<section class="eq" id="eq">
+  <div class="wrap">
+    <div class="lead grid">
+      <h2>Aparatura</h2>
+      <p>Urządzenia, na których ta usługa jest wykonywana. Każde ma kartę z parametrami i osobą odpowiedzialną.</p>
+    </div>
+
+    <div class="flag grid">
+      <div class="name">
+        <h3>Drukarka 3D do metalu Aconity mini</h3>
+        <p>Aparat wiodący tej usługi: selektywne topienie laserowe proszków metali z podgrzewaniem do 800°C.</p>
+        <a class="btn-link" href="#">Karta aparatu</a>
+      </div>
+      <ul class="speclist">
+        <li><span>Technologia</span><span>PBF-LB</span></li>
+        <li><span>Podgrzewanie</span><span>do 800°C</span></li>
+        <li><span>Materiały</span><span>stopy Ti, Al, Inconel</span></li>
+        <li><span>Proszki</span><span>również nanoproszki</span></li>
+        <li><span>Producent</span><span>Aconity 3D</span></li>
+      </ul>
+    </div>
+
+    <table>
+      <thead><tr><th>Pozostała aparatura</th><th>Producent</th><th>Zastosowanie</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>Reometr Anton Paar MCR 302e</td><td>Anton Paar</td><td>Analiza proszków w zadanej temperaturze i wilgotności</td><td><a href="#">Karta</a></td></tr>
+        <tr><td>Analizator wielkości i sferyczności cząstek Kamika Mini 30</td><td>Kamika</td><td>Wielkość i sferyczność cząstek</td><td><a href="#">Karta</a></td></tr>
+        <tr><td>Oprogramowanie inżynierskie</td><td>Siemens · Materialise · ANSYS</td><td><span class="spec">CAD/CAE · symulacje MES</span></td><td><a href="#">Karta</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="who grid" id="who">
+    <h2>Kto prowadzi usługę</h2>
+    <div class="card">
+      <p class="person">dr inż. Bartłomiej Wysocki</p>
+      <p class="role">Ekspert — druk 3D, analiza struktury</p>
+      <dl>
+        <dt>E-mail</dt><dd><a href="#">b.wysocki@uksw.edu.pl</a></dd>
+        <dt>Telefon</dt><dd>+48 22 380 43 25 <span class="note">(sekretariat MCB)</span></dd>
+      </dl>
+      <div class="actions">
+        <a class="btn btn-primary" href="#">Zapytaj o tę usługę <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+        <p class="note">Formularz trafi bezpośrednio do eksperta, z nazwą usługi już wpisaną.</p>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>01 Hero — MCB UKSW</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .hero { padding-top: var(--s-8); padding-bottom: var(--s-9); }
+  .hero h1 { font-size: var(--text-display-xl); line-height: var(--lh-display); grid-column: 1 / -1; margin-bottom: var(--s-8); }
+  .hero h1 em { font-style: normal; color: var(--burgundy); }
+  .side { grid-column: 1 / 5; display: flex; flex-direction: column; }
+  .lede { font-size: var(--text-statement); line-height: 1.42; max-width: 24em; }
+  .figure { grid-column: 5 / -1; margin-right: calc(-1 * var(--gutter)); }
+  .figure img { aspect-ratio: 16 / 10; object-position: 58% 78%; }
+  .figure figcaption { padding-right: var(--gutter); }
+
+  .router { margin-top: var(--s-7); }
+  .router h2 { font-family: var(--font-sans); font-weight: 600; font-size: 0.9375rem; letter-spacing: 0; margin-bottom: var(--s-3); }
+  .router ol { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+  .router li a { display: grid; grid-template-columns: 1fr auto; gap: 2px var(--s-4); padding: 13px 0; border-bottom: var(--hair); text-decoration: none; }
+  .router li a:hover .q { color: var(--burgundy); }
+  .router .q { font-size: 1rem; line-height: 1.35; }
+  .router .to { grid-column: 1; font-size: var(--text-small); color: var(--steel); }
+  .router .arrow { grid-row: 1 / span 2; grid-column: 2; align-self: center; color: var(--burgundy); }
+  .router .more { display: flex; gap: var(--s-5); margin-top: var(--s-5); font-size: 0.9375rem; }
+  .router .more a { color: var(--burgundy); }
+
+  .partners { border-top: var(--hair); padding: var(--s-5) 0 var(--s-6); display: flex; gap: var(--s-6); align-items: baseline; font-size: 0.9375rem; color: var(--ink-muted); }
+  .partners strong { font-weight: 500; color: var(--ink); }
+  .partners .addr { margin-left: auto; }
+
+  @media (max-width: 760px) {
+    .hero { display: flex; flex-direction: column; padding-top: var(--s-6); padding-bottom: var(--s-7); }
+    .hero h1 { margin-bottom: var(--s-5); }
+    .side, .figure { grid-column: 1 / -1; }
+    .figure { order: 2; margin: var(--s-6) calc(-1 * var(--gutter)) 0; }
+    .figure figcaption { padding: 0 var(--gutter); }
+    .figure img { aspect-ratio: 4 / 3; object-position: 62% 100%; }
+    .router { order: 3; }
+    .side { display: contents; }
+    .lede { order: 1; }
+    .partners { flex-direction: column; gap: var(--s-2); }
+    .partners .addr { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="nav">
+    <a class="wordmark" href="#"><b>MCB</b><span>Multidyscyplinarne Centrum Badawcze UKSW</span></a>
+    <a class="link" href="#">Usługi</a>
+    <a class="link" href="#">Aparatura</a>
+    <a class="link" href="#">Eksperci</a>
+    <a class="link" href="#">Projekty</a>
+    <a class="link" href="#">O centrum</a>
+    <span class="lang">PL / EN</span>
+    <a class="btn btn-primary" href="#">Zapytaj o badanie</a>
+    <button class="menu">Menu <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h12M2 11h12"/></svg></button>
+  </header>
+
+  <main class="hero grid">
+    <h1>Nauka, którą można zamówić.</h1>
+
+    <div class="side">
+      <p class="lede">Laboratoria UKSW w Dziekanowie Leśnym przyjmują zlecenia z przemysłu: od analizy pękniętej części po druk 3D nowego stopu. 56 pozycji aparatury, 13 usług, eksperci z nazwiska.</p>
+
+      <nav class="router" aria-labelledby="r-h">
+        <h2 id="r-h">Od czego zaczynamy?</h2>
+        <ol>
+          <li><a href="#"><span class="q">Część pękła w eksploatacji. Skąd defekt?</span><span class="to">Preparatyka metalograficzna</span><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></li>
+          <li><a href="#"><span class="q">Prototyp musi być z metalu, nie z tworzywa.</span><span class="to">Wytwarzanie przyrostowe metali</span><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></li>
+          <li><a href="#"><span class="q">Zajrzeć do środka próbki bez jej cięcia.</span><span class="to">Analiza struktury · mikrotomografia</span><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></li>
+          <li><a href="#"><span class="q">Symulacja przerasta nasze serwery.</span><span class="to">Zasoby obliczeniowe · klaster CATO</span><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></li>
+          <li><a href="#"><span class="q">Teren lub obiekt do zmapowania z powietrza.</span><span class="to">Akwizycja danych dronami</span><svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></li>
+        </ol>
+        <p class="more"><a href="#">Wszystkie usługi</a><a href="#">Katalog aparatury</a></p>
+      </nav>
+    </div>
+
+    <figure class="plate figure">
+      <img src="../../../public/gallery/HA705863-scaled.jpg" alt="Dłoń w rękawicy umieszcza próbkę na miedzianej płycie tyglowej pieca łukowego">
+      <figcaption><span class="fig">Ryc. 1</span><span>Wsad na miedzianej płycie tyglowej pieca łukowego Edmund Bühler AM 500. Topienie do 3500°C w atmosferze argonu. <a href="#">Karta aparatu</a></span></figcaption>
+    </figure>
+  </main>
+
+  <footer class="partners">
+    <span>Współpracujemy m.in. z <strong>KGHM Polska Miedź</strong>, <strong>PGE</strong>, <strong>Termocent</strong> i <strong>Geocom</strong>.</span>
+    <span class="addr">ul. Marii Konopnickiej 1, Dziekanów Leśny</span>
+  </footer>
+</div>
+</body>
+</html>

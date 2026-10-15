@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>04 Karta aparatu — MCB UKSW</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .crumb { font-size: var(--text-small); color: var(--ink-muted); padding: var(--s-5) 0 0; display: flex; gap: var(--s-3); flex-wrap: wrap; }
+  .crumb a { text-decoration: none; }
+  .crumb .cnum { font-size: 0.9375rem; }
+
+  .title { padding: var(--s-7) 0 var(--s-7); align-items: end; row-gap: var(--s-4); }
+  .title h1 { grid-column: 1 / 10; font-size: var(--text-display-l); line-height: var(--lh-display); }
+  .title .highlight { grid-column: 10 / -1; font-size: 1rem; color: var(--ink-muted); }
+
+  .sheet { row-gap: var(--s-7); padding-bottom: var(--s-9); }
+  .plates { grid-column: 1 / 8; display: grid; grid-template-columns: 2fr 1fr; gap: var(--s-5); align-items: end; }
+  .plates .main { grid-column: 1 / -1; }
+  .plates .main img { aspect-ratio: 3 / 2; object-position: 50% 100%; }
+  .plates .detail img { aspect-ratio: 1 / 1; object-position: 78% 50%; }
+  .plates .detail { grid-column: 2; }
+  .plates .note { grid-column: 1; grid-row: 2; align-self: start; font-size: 0.9375rem; color: var(--ink-muted); max-width: 26em; }
+
+  .data { grid-column: 9 / -1; }
+  .data h2 { font-family: var(--font-sans); font-weight: 600; font-size: 0.9375rem; letter-spacing: 0; margin-bottom: var(--s-3); }
+  .data .speclist { border-top: 1px solid var(--ink); }
+  .data .speclist li { grid-template-columns: 9.5em 1fr; }
+  .data .speclist .big { font-size: 1.375rem; color: var(--burgundy); }
+  .data .speclist a { color: var(--burgundy); font-family: var(--font-sans); font-size: 0.9375rem; }
+
+  .owner { margin-top: var(--s-7); padding: var(--s-6); background: var(--paper-deep); }
+  .owner .who { font-family: var(--font-display); font-size: 1.75rem; line-height: 1.1; letter-spacing: -0.015em; }
+  .owner .role { color: var(--ink-muted); margin: var(--s-2) 0 var(--s-4); font-size: 0.9375rem; }
+  .owner .btn { margin-top: var(--s-5); width: 100%; justify-content: space-between; }
+
+  .more { background: var(--steel-wash); padding: var(--s-9) 0 var(--s-10); }
+  .more .grid { row-gap: var(--s-6); }
+  .more h2 { grid-column: 1 / 5; font-size: var(--text-display-m); line-height: 1.1; }
+  .more .tbl { grid-column: 5 / -1; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
+  th { text-align: left; font-weight: 400; color: var(--ink-muted); font-size: var(--text-small); padding: 0 var(--s-4) var(--s-2) 0; border-bottom: 1px solid var(--ink); }
+  td { padding: 15px var(--s-4) 15px 0; border-bottom: 1px solid #BFC6CC; vertical-align: baseline; }
+  td .spec { color: var(--ink); }
+  td:last-child { text-align: right; padding-right: 0; }
+  td a { color: var(--burgundy); }
+
+  @media (max-width: 760px) {
+    .title { padding: var(--s-5) 0; }
+    .sheet { padding-bottom: var(--s-8); }
+    .title h1, .title .highlight, .plates, .data, .more h2, .more .tbl { grid-column: 1 / -1; }
+    .plates { margin: 0 calc(-1 * var(--gutter)); grid-template-columns: 1fr; }
+    .plates .detail { display: none; }
+    .plates .main figcaption, .plates .note { padding: 0 var(--gutter); }
+    .plates .note { grid-row: auto; }
+    .data .speclist li { grid-template-columns: 1fr; }
+    .owner { margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter)); padding: var(--s-6) var(--gutter); }
+    .more { padding: var(--s-8) 0 var(--s-9); }
+    thead { display: none; }
+    tr { display: grid; grid-template-columns: 1fr auto; padding: 12px 0; border-bottom: 1px solid #BFC6CC; }
+    td { border: 0; padding: 0; }
+    td:nth-child(2) { grid-column: 1; }
+    td:last-child { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="nav">
+    <a class="wordmark" href="#"><b>MCB</b><span>Multidyscyplinarne Centrum Badawcze UKSW</span></a>
+    <a class="link" href="#">Usługi</a>
+    <a class="link" href="#" aria-current="page">Aparatura</a>
+    <a class="link" href="#">Eksperci</a>
+    <a class="link" href="#">Projekty</a>
+    <a class="link" href="#">O centrum</a>
+    <span class="lang">PL / EN</span>
+    <a class="btn btn-primary" href="#">Zapytaj o badanie</a>
+    <button class="menu">Menu <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 5h12M2 11h12"/></svg></button>
+  </header>
+  <nav class="crumb" aria-label="Okruszki"><a href="#">Aparatura</a><span>/</span><a href="#"><span class="cnum">01</span> Inżynieria Materiałowa i Wytwarzanie</a><span>/</span><a href="#">Wytwarzanie Stopów Metali</a></nav>
+
+  <div class="title grid">
+    <h1>Piec łukowy Edmund Bühler AM 500</h1>
+    <p class="highlight">Topienie w temperaturze do 3500°C w atmosferze ochronnej argonu.</p>
+  </div>
+
+  <section class="sheet grid">
+    <div class="plates">
+      <figure class="plate main">
+        <img src="../../../public/gallery/HA705863-scaled.jpg" alt="Próbka umieszczana na miedzianej płycie tyglowej">
+        <figcaption><span class="fig">Ryc. 1</span><span>Wsad na miedzianej płycie tyglowej, przed zamknięciem komory.</span></figcaption>
+      </figure>
+      <p class="note">Topienie wsadu o masie do 500 g w temperaturze do 3500°C; dostępne różne wersje płyt tyglowych.</p>
+      <figure class="plate detail">
+        <img src="../../../public/gallery/DSC_7033-1-scaled.jpg" alt="Komora pieca łukowego z wziernikami i manometrem">
+        <figcaption><span class="fig">Ryc. 2</span><span>Komora robocza z wziernikami.</span></figcaption>
+      </figure>
+    </div>
+
+    <aside class="data">
+      <h2>Parametry</h2>
+      <ul class="speclist">
+        <li><span>Temperatura</span><span class="big">do 3500°C</span></li>
+        <li><span>Masa wsadu</span><span>do 500 g</span></li>
+        <li><span>Atmosfera</span><span>argon (ochronna)</span></li>
+        <li><span>Tygle</span><span>płyty tyglowe Cu, różne wersje</span></li>
+        <li><span>Producent</span><span>Edmund Bühler GmbH</span></li>
+        <li><span>Usługa</span><span><a href="#">Wytwarzanie Stopów Metali</a></span></li>
+      </ul>
+
+      <div class="owner">
+        <p class="who">Samih Haj Ibrahim</p>
+        <p class="role">Ekspert — wytwarzanie stopów, badania mechaniczne</p>
+        <a href="#">s.hajibrahim@uksw.edu.pl</a>
+        <a class="btn btn-primary" href="#">Zapytaj o pracę na tym aparacie <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      </div>
+    </aside>
+  </section>
+</div>
+
+<section class="more">
+  <div class="wrap">
+    <div class="grid">
+      <h2>W tej samej usłudze</h2>
+      <div class="tbl">
+        <table>
+          <thead><tr><th>Aparat</th><th>Parametry</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>Piec poziomy jednostrefowy (rurowy)</td><td><span class="spec">do 1310°C · Ø 150 mm · strefa 500 mm</span></td><td><a href="#">Karta</a></td></tr>
+            <tr><td>Piec muflowy</td><td><span class="spec">do 1200°C · powietrze</span></td><td><a href="#">Karta</a></td></tr>
+            <tr><td>Walcarka elektryczna</td><td><span class="spec">zakres 10–1 mm</span></td><td><a href="#">Karta</a></td></tr>
+            <tr><td>Nożyce gilotynowe</td><td><span class="spec">cięcie do 1320 mm</span></td><td><a href="#">Karta</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

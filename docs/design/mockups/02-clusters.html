@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>02 Klastry — MCB UKSW</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  body { background: var(--paper-deep); }
+  .sec { padding: var(--s-9) 0 var(--s-9); }
+  .head { align-items: end; margin-bottom: var(--s-8); }
+  .head h2 { grid-column: 1 / 8; font-size: var(--text-display-l); line-height: var(--lh-display); }
+  .head p { grid-column: 9 / -1; font-size: var(--text-statement); line-height: 1.42; }
+
+  .rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+  .row { padding: var(--s-6) 0 var(--s-7); border-bottom: 1px solid var(--rule); row-gap: var(--s-4); }
+  .row .cnum { grid-column: 1 / 3; font-size: clamp(3rem, 6vw, 5.5rem); line-height: 0.85; }
+  .row .about { grid-column: 3 / 7; }
+  .row h3 { font-size: clamp(1.5rem, 2.2vw, 2.125rem); line-height: 1.08; margin-bottom: var(--s-4); }
+  .row .about p { color: var(--ink-muted); max-width: 30em; }
+  .row .about .all { display: inline-flex; margin-top: var(--s-5); font-size: 0.9375rem; color: var(--burgundy); }
+
+  .svc { grid-column: 7 / 11; list-style: none; margin: 0; padding: 0; align-self: start; }
+  .svc li a { display: flex; align-items: baseline; gap: var(--s-4); padding: 9px 0; border-bottom: 1px solid var(--rule); text-decoration: none; font-size: 1rem; }
+  .svc { border-top: 1px solid var(--rule); }
+  .svc li a span:first-child { flex: 1; }
+  .svc li a:hover span:first-child, .svc li a.is-hover span:first-child { color: var(--burgundy); text-decoration: underline; }
+  .svc .spec { white-space: nowrap; }
+  .svc-h { display: flex; justify-content: space-between; font-size: var(--text-small); color: var(--ink-muted); margin-bottom: var(--s-2); }
+
+  .row .plate { grid-column: 11 / -1; }
+  .row .plate img { aspect-ratio: 3 / 4; }
+
+  .total { display: flex; justify-content: space-between; align-items: baseline; padding-top: var(--s-5); font-size: 0.9375rem; color: var(--ink-muted); }
+  .total a { color: var(--burgundy); }
+
+  @media (max-width: 1100px) {
+    .row .about { grid-column: 3 / 9; }
+    .row .plate { grid-column: 9 / -1; grid-row: 1; }
+    .svc { grid-column: 3 / -1; }
+  }
+  @media (max-width: 760px) {
+    .sec { padding: var(--s-8) 0; }
+    .head { margin-bottom: var(--s-6); row-gap: var(--s-4); }
+    .head h2, .head p { grid-column: 1 / -1; }
+    .row { padding: var(--s-5) 0 var(--s-6); }
+    .row .cnum { grid-column: 1 / 4; font-size: 2.75rem; }
+    .row .plate { grid-column: 9 / -1; grid-row: 1; }
+    .row .about, .svc { grid-column: 1 / -1; }
+    .total { flex-direction: column; gap: var(--s-2); }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="sec">
+    <div class="head grid">
+      <h2>Cztery klastry, trzynaście usług</h2>
+      <p>Każda usługa prowadzi do konkretnej aparatury i do osoby, która za nią odpowiada.</p>
+    </div>
+
+    <ol class="rows">
+      <li class="row grid">
+        <span class="cnum">01</span>
+        <div class="about">
+          <h3>Inżynieria Materiałowa i Wytwarzanie</h3>
+          <p>Projektowanie materiałów, zaawansowane procesy metalurgiczne oraz technologie druku 3D metali, tworzyw i ceramiki.</p>
+          <a class="all" href="#">Cały klaster</a>
+        </div>
+        <ul class="svc">
+          <li><a href="#"><span>Projektowanie Materiałów</span><span class="spec">5 aparatów</span></a></li>
+          <li><a href="#"><span>Wytwarzanie Stopów Metali</span><span class="spec">5 aparatów</span></a></li>
+          <li><a href="#"><span>Wytwarzanie Przyrostowe Metali (Druk 3D)</span><span class="spec">4 aparaty</span></a></li>
+          <li><a href="#"><span>Wytwarzanie Przyrostowe Tworzyw Sztucznych i Ceramiki</span><span class="spec">4 aparaty</span></a></li>
+          <li><a href="#"><span>Preparatyka Metalograficzna</span><span class="spec">4 aparaty</span></a></li>
+        </ul>
+        <figure class="plate"><img src="../../../public/images/oferta/druk3d-metale.png" alt="Iskry podczas topienia laserowego proszku metalu"></figure>
+      </li>
+
+      <li class="row grid">
+        <span class="cnum">02</span>
+        <div class="about">
+          <h3>Analiza i Badania Materiałowe</h3>
+          <p>Zaawansowana charakteryzacja materiałowa, mikrostruktura, tomografia, badania mechaniczne oraz teledetekcja dronami.</p>
+          <a class="all" href="#">Cały klaster</a>
+        </div>
+        <ul class="svc">
+          <li><a class="is-hover" href="#"><span>Analiza Struktury i Składu Fazowego</span><span class="spec">4 aparaty</span></a></li>
+          <li><a href="#"><span>Badania Właściwości Mechanicznych</span><span class="spec">3 aparaty</span></a></li>
+          <li><a href="#"><span>Akwizycja Danych Dronami</span><span class="spec">5 aparatów</span></a></li>
+        </ul>
+        <figure class="plate"><img src="../../../public/images/oferta/wlasciwosci-mechaniczne.png" alt="Próbka w uchwytach maszyny wytrzymałościowej"></figure>
+      </li>
+
+      <li class="row grid">
+        <span class="cnum">03</span>
+        <div class="about">
+          <h3>Technologie Cyfrowe i VR</h3>
+          <p>Obliczenia wysokiej wydajności (HPC), digitalizacja 3D, wirtualna rzeczywistość oraz informatyka śledcza.</p>
+          <a class="all" href="#">Cały klaster</a>
+        </div>
+        <ul class="svc">
+          <li><a href="#"><span>Zasoby Obliczeniowe (Klaster CATO)</span><span class="spec">3 aparaty</span></a></li>
+          <li><a href="#"><span>Skanowanie 3D, Digitalizacja i VR</span><span class="spec">4 aparaty</span></a></li>
+          <li><a href="#"><span>Informatyka Śledcza</span><span class="spec">5 aparatów</span></a></li>
+        </ul>
+        <figure class="plate"><img src="../../../public/images/oferta/zasoby-obliczeniowe.png" alt="Szafy klastra obliczeniowego CATO"></figure>
+      </li>
+
+      <li class="row grid">
+        <span class="cnum">04</span>
+        <div class="about">
+          <h3>Środowisko i Społeczeństwo</h3>
+          <p>Analizy chemiczno-biologiczne próbek środowiskowych oraz badania komunikacji medialnej i UX.</p>
+          <a class="all" href="#">Cały klaster</a>
+        </div>
+        <ul class="svc">
+          <li><a href="#"><span>Laboratorium Środowiskowe</span><span class="spec">5 aparatów</span></a></li>
+          <li><a href="#"><span>Medioznawstwo i Analizy UX</span><span class="spec">5 aparatów</span></a></li>
+        </ul>
+        <figure class="plate"><img src="../../../public/images/oferta/laboratorium-srodowiskowe.png" alt="Pipetowanie próbki w laboratorium środowiskowym"></figure>
+      </li>
+    </ol>
+
+    <p class="total"><span>Razem 56 pozycji aparatury w czterech klastrach.</span><a href="#">Przeglądaj katalog aparatury</a></p>
+  </section>
+</div>
+</body>
+</html>
