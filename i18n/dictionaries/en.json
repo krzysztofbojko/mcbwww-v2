@@ -1,0 +1,23 @@
+{
+  "site": { "name": "Multidisciplinary Research Centre of UKSW", "short": "MCB UKSW" },
+  "nav": {
+    "oferta": "Services",
+    "infrastruktura": "Infrastructure",
+    "projekty": "Projects",
+    "publikacje": "Publications",
+    "galeria": "Gallery",
+    "kontakt": "Contact"
+  },
+  "common": {
+    "readMore": "Read more",
+    "contactCta": "Get in touch",
+    "languageSwitcher": "Change language",
+    "skipToContent": "Skip to content"
+  },
+  "catalog": { "empty": "No results match the selected criteria." },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The page you are looking for does not exist or has been moved.",
+    "back": "Back to the homepage"
+  }
+}

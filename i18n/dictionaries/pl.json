@@ -1,0 +1,23 @@
+{
+  "site": { "name": "Multidyscyplinarne Centrum Badawcze UKSW", "short": "MCB UKSW" },
+  "nav": {
+    "oferta": "Oferta",
+    "infrastruktura": "Infrastruktura",
+    "projekty": "Projekty",
+    "publikacje": "Publikacje",
+    "galeria": "Galeria",
+    "kontakt": "Kontakt"
+  },
+  "common": {
+    "readMore": "Czytaj dalej",
+    "contactCta": "Skontaktuj się z nami",
+    "languageSwitcher": "Zmień język",
+    "skipToContent": "Przejdź do treści"
+  },
+  "catalog": { "empty": "Brak wyników spełniających wybrane kryteria." },
+  "notFound": {
+    "title": "Nie znaleziono strony",
+    "body": "Strona, której szukasz, nie istnieje lub została przeniesiona.",
+    "back": "Wróć na stronę główną"
+  }
+}
