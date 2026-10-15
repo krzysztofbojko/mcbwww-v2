@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isLocale, localePath, switchLocalePath, t, defaultLocale, locales } from "@/i18n";
+import { isLocale, localePath, plural, switchLocalePath, t, defaultLocale, locales } from "@/i18n";
 import pl from "@/i18n/dictionaries/pl.json";
 import en from "@/i18n/dictionaries/en.json";
 
@@ -32,5 +32,21 @@ describe("i18n", () => {
   });
   it("dictionaries have identical keys", () => {
     expect(Object.keys(flatten(en)).sort()).toEqual(Object.keys(flatten(pl)).sort());
+  });
+});
+
+describe("plural", () => {
+  const forms = { one: "{n} aparat", few: "{n} aparaty", many: "{n} aparatów", other: "{n} aparatu" };
+  it("uses Polish plural categories", () => {
+    expect(plural(forms, 1, "pl")).toBe("1 aparat");
+    expect(plural(forms, 3, "pl")).toBe("3 aparaty");
+    expect(plural(forms, 5, "pl")).toBe("5 aparatów");
+    expect(plural(forms, 12, "pl")).toBe("12 aparatów");
+    expect(plural(forms, 22, "pl")).toBe("22 aparaty");
+  });
+  it("uses English categories", () => {
+    const en = { one: "{n} instrument", few: "x", many: "x", other: "{n} instruments" };
+    expect(plural(en, 1, "en")).toBe("1 instrument");
+    expect(plural(en, 4, "en")).toBe("4 instruments");
   });
 });

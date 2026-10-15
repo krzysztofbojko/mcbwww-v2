@@ -30,3 +30,16 @@ export function switchLocalePath(pathname: string, to: Locale): string {
   return localePath(to, tail.length ? `/${tail.join("/")}` : "/");
 }
 
+
+export interface PluralForms {
+  one: string;
+  few: string;
+  many: string;
+  other: string;
+}
+
+/** Picks the CLDR plural form for `n` (pl: one/few/many/other, en: one/other) and fills `{n}`. */
+export function plural(forms: PluralForms, n: number, locale: Locale): string {
+  const category = new Intl.PluralRules(locale).select(n) as keyof PluralForms;
+  return (forms[category] ?? forms.other).replace("{n}", String(n));
+}
