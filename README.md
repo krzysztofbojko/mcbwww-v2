@@ -1,4 +1,4 @@
-# MCB UKSW – strona Międzywydziałowego Centrum Badawczego (v2)
+# MCB UKSW – strona Multidyscyplinarne Centrum Badawczego (v2)
 
 Strona centrum badawczego MCB UKSW oparta na Next.js 16 (App Router), React 19, TypeScript i Tailwind CSS v4. Dwa języki (`/pl`, `/en`), katalog aparatury, usługi badawcze, formularz kontaktowy z captchą.
 
