@@ -30,6 +30,29 @@ describe("integrity", () => {
     expect(servicesByCluster("material-engineering")).toHaveLength(5);
     expect(servicesByCluster("analysis-control")).toHaveLength(3);
   });
+  it("keeps service slugs frozen (titles may change case, URLs may not)", () => {
+    expect(services.map((s) => s.slug)).toEqual([
+      "projektowanie-materialow",
+      "wytwarzanie-stopow-metali",
+      "wytwarzanie-przyrostowe-metali-druk-3d",
+      "wytwarzanie-przyrostowe-tworzyw-sztucznych-i-ceramiki",
+      "preparatyka-metalograficzna",
+      "analiza-struktury-i-skladu-fazowego",
+      "badania-wlasciwosci-mechanicznych",
+      "akwizycja-danych-dronami",
+      "zasoby-obliczeniowe-klaster-cato",
+      "skanowanie-3d-digitalizacja-i-vr",
+      "informatyka-sledcza",
+      "laboratorium-srodowiskowe",
+      "medioznawstwo-i-analizy-ux",
+    ]);
+    for (const s of services) expect(slugify(s.title.pl)).toBe(s.slug);
+  });
+  it("uses sentence case for Polish cluster and service titles", () => {
+    expect(clusters[0].title.pl).toBe("Inżynieria materiałowa i wytwarzanie");
+    expect(getService("zasoby-obliczeniowe-klaster-cato")!.title.pl).toBe("Zasoby obliczeniowe (klaster CATO)");
+    expect(getService("medioznawstwo-i-analizy-ux")!.title.pl).toBe("Medioznawstwo i analizy UX");
+  });
   it("has EN for cluster and service titles", () => {
     for (const c of clusters) { expect(c.title.en).toBeTruthy(); expect(c.description.en).toBeTruthy(); }
     for (const s of services) expect(s.title.en).toBeTruthy();
@@ -38,13 +61,13 @@ describe("integrity", () => {
 
 describe("resolveExperts", () => {
   it("resolves multiple contacts", () => {
-    const multi = services.find((s) => s.title.pl === "Zasoby Obliczeniowe (Klaster CATO)")!;
+    const multi = getService("zasoby-obliczeniowe-klaster-cato")!;
     expect(resolveExperts(multi).map((e) => e.name)).toEqual(["dr inż. Piotr Kwaśniak", "inż. Krzysztof Bojko"]);
   });
   it("returns [] for general MCB contact", () => {
-    const general = services.find((s) => s.title.pl === "Preparatyka Metalograficzna")!;
+    const general = getService("preparatyka-metalograficzna")!;
     expect(resolveExperts(general)).toEqual([]);
-    const forensic = services.find((s) => s.title.pl === "Informatyka Śledcza")!;
+    const forensic = getService("informatyka-sledcza")!;
     expect(resolveExperts(forensic)).toEqual([]);
   });
   it("derives ids without titles", () => {

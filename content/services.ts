@@ -5,7 +5,7 @@ export const services: Service[] = [
     "slug": "projektowanie-materialow",
     "clusterId": "material-engineering",
     "title": {
-      "pl": "Projektowanie Materiałów",
+      "pl": "Projektowanie materiałów",
       "en": "Materials Design"
     },
     "image": "/images/oferta/projektowanie-materialow.png",
@@ -40,7 +40,7 @@ export const services: Service[] = [
     "slug": "wytwarzanie-stopow-metali",
     "clusterId": "material-engineering",
     "title": {
-      "pl": "Wytwarzanie Stopów Metali",
+      "pl": "Wytwarzanie stopów metali",
       "en": "Metal Alloy Production"
     },
     "image": "/images/oferta/wytwarzanie-stopow.png",
@@ -72,7 +72,7 @@ export const services: Service[] = [
     "slug": "wytwarzanie-przyrostowe-metali-druk-3d",
     "clusterId": "material-engineering",
     "title": {
-      "pl": "Wytwarzanie Przyrostowe Metali (Druk 3D)",
+      "pl": "Wytwarzanie przyrostowe metali (druk 3D)",
       "en": "Additive Manufacturing of Metals (3D Printing)"
     },
     "image": "/images/oferta/druk3d-metale.png",
@@ -101,7 +101,7 @@ export const services: Service[] = [
     "slug": "wytwarzanie-przyrostowe-tworzyw-sztucznych-i-ceramiki",
     "clusterId": "material-engineering",
     "title": {
-      "pl": "Wytwarzanie Przyrostowe Tworzyw Sztucznych i Ceramiki",
+      "pl": "Wytwarzanie przyrostowe tworzyw sztucznych i ceramiki",
       "en": "Additive Manufacturing of Plastics and Ceramics"
     },
     "image": "/images/oferta/druk3d-tworzywa-ceramika.png",
@@ -127,7 +127,7 @@ export const services: Service[] = [
     "slug": "preparatyka-metalograficzna",
     "clusterId": "material-engineering",
     "title": {
-      "pl": "Preparatyka Metalograficzna",
+      "pl": "Preparatyka metalograficzna",
       "en": "Metallographic Sample Preparation"
     },
     "image": "/images/oferta/preparatyka-metalograficzna.png",
@@ -154,7 +154,7 @@ export const services: Service[] = [
     "slug": "analiza-struktury-i-skladu-fazowego",
     "clusterId": "analysis-control",
     "title": {
-      "pl": "Analiza Struktury i Składu Fazowego",
+      "pl": "Analiza struktury i składu fazowego",
       "en": "Structure and Phase Composition Analysis"
     },
     "image": "/images/oferta/struktura-sklad-fazowy.png",
@@ -177,7 +177,7 @@ export const services: Service[] = [
     "slug": "badania-wlasciwosci-mechanicznych",
     "clusterId": "analysis-control",
     "title": {
-      "pl": "Badania Właściwości Mechanicznych",
+      "pl": "Badania właściwości mechanicznych",
       "en": "Mechanical Properties Testing"
     },
     "image": "/images/oferta/wlasciwosci-mechaniczne.png",
@@ -203,7 +203,7 @@ export const services: Service[] = [
     "slug": "akwizycja-danych-dronami",
     "clusterId": "analysis-control",
     "title": {
-      "pl": "Akwizycja Danych Dronami",
+      "pl": "Akwizycja danych dronami",
       "en": "Drone-Based Data Acquisition"
     },
     "image": "/images/oferta/akwizycja-dronami.png",
@@ -232,7 +232,7 @@ export const services: Service[] = [
     "slug": "zasoby-obliczeniowe-klaster-cato",
     "clusterId": "digital-tech",
     "title": {
-      "pl": "Zasoby Obliczeniowe (Klaster CATO)",
+      "pl": "Zasoby obliczeniowe (klaster CATO)",
       "en": "Computing Resources (CATO Cluster)"
     },
     "image": "/images/oferta/zasoby-obliczeniowe.png",
@@ -265,7 +265,7 @@ export const services: Service[] = [
     "slug": "skanowanie-3d-digitalizacja-i-vr",
     "clusterId": "digital-tech",
     "title": {
-      "pl": "Skanowanie 3D, Digitalizacja i VR",
+      "pl": "Skanowanie 3D, digitalizacja i VR",
       "en": "3D Scanning, Digitization and VR"
     },
     "image": "/images/oferta/skanowanie3d-vr.png",
@@ -291,7 +291,7 @@ export const services: Service[] = [
     "slug": "informatyka-sledcza",
     "clusterId": "digital-tech",
     "title": {
-      "pl": "Informatyka Śledcza",
+      "pl": "Informatyka śledcza",
       "en": "Digital Forensics"
     },
     "image": "/images/oferta/informatyka-sledcza.png",
@@ -321,7 +321,7 @@ export const services: Service[] = [
     "slug": "laboratorium-srodowiskowe",
     "clusterId": "society-environment",
     "title": {
-      "pl": "Laboratorium Środowiskowe",
+      "pl": "Laboratorium środowiskowe",
       "en": "Environmental Laboratory"
     },
     "image": "/images/oferta/laboratorium-srodowiskowe.png",
@@ -350,7 +350,7 @@ export const services: Service[] = [
     "slug": "medioznawstwo-i-analizy-ux",
     "clusterId": "society-environment",
     "title": {
-      "pl": "Medioznawstwo i Analizy UX",
+      "pl": "Medioznawstwo i analizy UX",
       "en": "Media Studies and UX Analysis"
     },
     "image": "/images/oferta/medioznawstwo.png",

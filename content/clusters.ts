@@ -5,7 +5,7 @@ export const clusters: Cluster[] = [
     "id": "material-engineering",
     "number": "01",
     "title": {
-      "pl": "Inżynieria Materiałowa i Wytwarzanie",
+      "pl": "Inżynieria materiałowa i wytwarzanie",
       "en": "Materials Engineering and Manufacturing"
     },
     "description": {
@@ -17,7 +17,7 @@ export const clusters: Cluster[] = [
     "id": "analysis-control",
     "number": "02",
     "title": {
-      "pl": "Analiza i Badania Materiałowe",
+      "pl": "Analiza i badania materiałowe",
       "en": "Materials Analysis and Testing"
     },
     "description": {
@@ -29,7 +29,7 @@ export const clusters: Cluster[] = [
     "id": "digital-tech",
     "number": "03",
     "title": {
-      "pl": "Technologie Cyfrowe i VR",
+      "pl": "Technologie cyfrowe i VR",
       "en": "Digital Technologies and VR"
     },
     "description": {
@@ -41,7 +41,7 @@ export const clusters: Cluster[] = [
     "id": "society-environment",
     "number": "04",
     "title": {
-      "pl": "Środowisko i Społeczeństwo",
+      "pl": "Środowisko i społeczeństwo",
       "en": "Environment and Society"
     },
     "description": {
