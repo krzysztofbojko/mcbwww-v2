@@ -1,9 +1,13 @@
 import { describe, expect, it } from "vitest";
-import { getMiddlewareMatchers } from "next/dist/build/analysis/get-page-static-info";
+import * as staticInfo from "next/dist/build/analysis/get-page-static-info";
 import { config } from "@/proxy";
 
 // Compile the matcher exactly as Next does, so the test sees the same regex the server uses.
-const matchers = getMiddlewareMatchers(config.matcher, {} as Parameters<typeof getMiddlewareMatchers>[1]);
+// getMiddlewareMatchers is exported at runtime but missing from Next's type declarations.
+const { getMiddlewareMatchers } = staticInfo as unknown as {
+  getMiddlewareMatchers: (matcher: string[], nextConfig: object) => { regexp: string }[];
+};
+const matchers = getMiddlewareMatchers(config.matcher, {});
 const runsProxy = (path: string) => matchers.some((m) => new RegExp(m.regexp).test(path));
 
 describe("proxy matcher", () => {
