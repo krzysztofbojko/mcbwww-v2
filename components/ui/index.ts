@@ -1,9 +1,11 @@
+// Server-side convenience barrel. Client components ("use client") import leaf modules instead
+// (e.g. "@/components/ui/cn"), so a client chunk never pulls in every primitive. Reveal is imported from
+// "@/components/ui/Reveal" (Section uses it via `reveal`).
 export { Button, type ButtonProps, type ButtonVariant } from "./Button";
 export { Container, type ContainerProps } from "./Container";
 export { Eyebrow, type EyebrowProps } from "./Eyebrow";
 export { Figure, type FigureProps } from "./Figure";
 export { Heading, type HeadingProps, type HeadingSize } from "./Heading";
-export { Reveal, type RevealProps } from "./Reveal";
 export { Rule, type RuleProps } from "./Rule";
 export { Section, type SectionProps, type SectionTone, type SectionSpace } from "./Section";
 export { Spec, SpecList, type SpecListProps, type SpecRow } from "./SpecList";

@@ -84,7 +84,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
         </div>
       </Section>
 
-      <Section id="eksperci" tone="paper" space="loose" aria-labelledby="eksperci-title" className="scroll-mt-14">
+      <Section id="eksperci" tone="paper" space="loose" reveal aria-labelledby="eksperci-title" className="scroll-mt-14">
         <div className="grid-12 gap-y-10">
           <div className="col-span-12 md:col-span-4">
             <Heading as="h2" size="m" id="eksperci-title">

@@ -1,5 +1,6 @@
 import type { ElementType, ReactNode } from "react";
 import { Container } from "./Container";
+import { Reveal } from "./Reveal";
 import { cn } from "./cn";
 
 export type SectionTone = "paper" | "deep" | "steel" | "burgundy" | "ink";
@@ -14,6 +15,11 @@ export interface SectionProps {
   space?: SectionSpace;
   /** Wrap children in the site Container (default true). Set false for full-bleed content. */
   contained?: boolean;
+  /**
+   * Calm scroll entrance (direction.md §Ruch): the content rises once, its items staggered, when the section
+   * starts below the first screen. Off by default; use it on sections that sit below the fold.
+   */
+  reveal?: boolean;
   className?: string;
   "aria-labelledby"?: string;
   "aria-label"?: string;
@@ -40,13 +46,18 @@ export function Section({
   tone = "paper",
   space = "default",
   contained = true,
+  reveal = false,
   className,
   children,
   ...aria
 }: SectionProps) {
   return (
     <Tag id={id} data-tone={tone} className={cn(tones[tone], spaces[space], className)} {...aria}>
-      {contained ? <Container>{children}</Container> : children}
+      {contained ? <Container>{content(children, reveal)}</Container> : content(children, reveal)}
     </Tag>
   );
+}
+
+function content(children: ReactNode, reveal: boolean) {
+  return reveal ? <Reveal stagger>{children}</Reveal> : children;
 }

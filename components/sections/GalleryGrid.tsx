@@ -4,7 +4,8 @@ import { useCallback, useEffect, useRef, useState, type KeyboardEvent, type Mous
 import Image from "next/image";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
 import type { Dictionary, Locale } from "@/i18n";
-import { Figure, cn } from "@/components/ui";
+import { Figure } from "@/components/ui/Figure";
+import { cn } from "@/components/ui/cn";
 
 export interface GalleryItem {
   src: string;

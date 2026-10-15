@@ -4,7 +4,7 @@ import { Suspense, type MouseEvent } from "react";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { locales, switchLocalePath, type Locale } from "@/i18n";
-import { cn } from "@/components/ui";
+import { cn } from "@/components/ui/cn";
 
 export interface LocaleSwitcherProps {
   locale: Locale;

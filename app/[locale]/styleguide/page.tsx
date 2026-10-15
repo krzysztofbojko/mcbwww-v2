@@ -9,7 +9,6 @@ import {
   Eyebrow,
   Figure,
   Heading,
-  Reveal,
   Rule,
   Section,
   Spec,
@@ -17,6 +16,7 @@ import {
   Tag,
   cn,
 } from "@/components/ui";
+import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
   title: "System projektowy",

@@ -4,7 +4,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import type { Publication } from "@/content/types";
 import { plural, type Dictionary, type Locale } from "@/i18n";
 import { groupByYear, publicationLink, publicationYears } from "@/lib/publications";
-import { cn } from "@/components/ui";
+import { cn } from "@/components/ui/cn";
 
 export interface PublicationListProps {
   /** Passed from the server page: client components must not import the @/content barrel. */

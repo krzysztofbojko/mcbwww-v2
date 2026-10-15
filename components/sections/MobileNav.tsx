@@ -5,7 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import type { Locale } from "@/i18n";
-import { Button, Container, cn } from "@/components/ui";
+import { Button } from "@/components/ui/Button";
+import { Container } from "@/components/ui/Container";
+import { cn } from "@/components/ui/cn";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 import { isCurrent, type NavItem } from "./nav";
 

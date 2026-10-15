@@ -53,10 +53,10 @@ export default async function ServicePage({ params }: { params: Promise<{ locale
         equipmentCount={items.length}
         cta={ask}
       />
-      <Section id="aparatura" tone="steel" aria-labelledby="aparatura-title">
+      <Section id="aparatura" tone="steel" reveal aria-labelledby="aparatura-title">
         <ServiceEquipment items={items} locale={locale} dict={dict} />
       </Section>
-      <Section id="ekspert" tone="paper" space="loose" aria-labelledby="ekspert-title">
+      <Section id="ekspert" tone="paper" space="loose" reveal aria-labelledby="ekspert-title">
         <ExpertContact experts={resolveExperts(service)} serviceSlug={service.slug} locale={locale} dict={dict} />
       </Section>
     </main>

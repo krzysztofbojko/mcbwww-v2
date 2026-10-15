@@ -26,7 +26,8 @@ import {
   withCluster,
   type CatalogFilter,
 } from "@/lib/catalog";
-import { Button, cn } from "@/components/ui";
+import { Button } from "@/components/ui/Button";
+import { cn } from "@/components/ui/cn";
 
 export interface EquipmentCatalogProps {
   locale: Locale;

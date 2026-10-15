@@ -169,3 +169,11 @@
     opacity: 1;
   }
 }
+
+/* Reveal (components/ui/Reveal.tsx) hides below-the-fold content inline until it scrolls in; print it all. */
+@media print {
+  [data-reveal-pending] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { cn } from "@/components/ui";
+import { cn } from "@/components/ui/cn";
 import { isCurrent, type NavItem } from "./nav";
 
 /** Desktop navigation row. The current section is underlined in burgundy (mockup `.nav a.link[aria-current]`). */

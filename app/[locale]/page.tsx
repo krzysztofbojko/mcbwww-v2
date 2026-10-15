@@ -24,19 +24,19 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   return (
     <main id="main">
       <HomeHero locale={locale} dict={dict} />
-      <Section tone="deep" aria-labelledby="clusters-title">
+      <Section tone="deep" reveal aria-labelledby="clusters-title">
         <ClusterIndex locale={locale} dict={dict} variant="home" />
       </Section>
-      <Section tone="paper" aria-labelledby="about-title">
+      <Section tone="paper" reveal aria-labelledby="about-title">
         <AboutBlock locale={locale} dict={dict} />
       </Section>
-      <Section tone="steel" aria-labelledby="flagship-title">
+      <Section tone="steel" reveal aria-labelledby="flagship-title">
         <FlagshipStrip locale={locale} dict={dict} />
       </Section>
-      <Section tone="paper" aria-labelledby="quote-title">
+      <Section tone="paper" reveal aria-labelledby="quote-title">
         <RectorQuote locale={locale} dict={dict} />
       </Section>
-      <Section tone="deep" space="loose" aria-labelledby="cta-title">
+      <Section tone="deep" space="loose" reveal aria-labelledby="cta-title">
         <HomeCta locale={locale} dict={dict} />
       </Section>
     </main>

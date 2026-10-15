@@ -195,7 +195,7 @@ export default async function EquipmentPage({ params }: { params: Params }) {
       </section>
 
       {others.length > 0 ? (
-        <Section tone="steel" space="loose" aria-labelledby="same-service-title">
+        <Section tone="steel" space="loose" reveal aria-labelledby="same-service-title">
           <div className="grid-12 gap-y-8">
             <Heading as="h2" size="m" id="same-service-title" className="col-span-12 md:col-span-4">
               {d.sameService}

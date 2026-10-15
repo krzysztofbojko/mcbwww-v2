@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
-import { cn } from "@/components/ui";
+import { cn } from "@/components/ui/cn";
 
 export interface ProjectTab {
   /** Also the panel's element id and URL hash, e.g. „zrealizowane”. */
