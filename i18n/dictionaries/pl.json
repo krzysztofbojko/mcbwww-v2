@@ -12,7 +12,87 @@
     "readMore": "Czytaj dalej",
     "contactCta": "Skontaktuj się z nami",
     "languageSwitcher": "Zmień język",
-    "skipToContent": "Przejdź do treści"
+    "skipToContent": "Przejdź do treści",
+    "equipmentCount": { "one": "{n} aparat", "few": "{n} aparaty", "many": "{n} aparatów", "other": "{n} aparatu" },
+    "equipmentCard": "Karta aparatu"
+  },
+  "header": {
+    "home": "MCB UKSW, strona główna",
+    "mainNav": "Nawigacja główna",
+    "cta": "Zapytaj o badanie",
+    "menu": "Menu",
+    "close": "Zamknij",
+    "menuTitle": "Menu"
+  },
+  "localeSwitcher": { "pl": "Polski", "en": "English" },
+  "footer": {
+    "centre": "Multidyscyplinarne Centrum Badawcze",
+    "university": "Uniwersytet Kardynała Stefana Wyszyńskiego w Warszawie",
+    "navLabel": "Mapa strony",
+    "contactLabel": "Kontakt",
+    "partners": "Współpracujemy m.in. z"
+  },
+  "home": {
+    "metaTitle": "MCB UKSW: badania i usługi laboratoryjne dla przemysłu",
+    "metaDescription": "Laboratoria UKSW w Dziekanowie Leśnym przyjmują zlecenia z przemysłu: badania materiałowe, druk 3D metali, obliczenia HPC, drony i analizy środowiskowe.",
+    "title": "Nauka, którą można zamówić.",
+    "lede": "Laboratoria UKSW w Dziekanowie Leśnym przyjmują zlecenia z przemysłu: od analizy pękniętej części po druk 3D nowego stopu. {equipment} pozycji aparatury, {services} usług, eksperci z nazwiska.",
+    "routerTitle": "Od czego zaczynamy?",
+    "router": [
+      { "slug": "preparatyka-metalograficzna", "q": "Część pękła w eksploatacji. Skąd defekt?", "to": "Preparatyka metalograficzna" },
+      { "slug": "wytwarzanie-przyrostowe-metali-druk-3d", "q": "Prototyp musi być z metalu, nie z tworzywa.", "to": "Wytwarzanie przyrostowe metali" },
+      { "slug": "analiza-struktury-i-skladu-fazowego", "q": "Zajrzeć do środka próbki bez jej cięcia.", "to": "Analiza struktury · mikrotomografia" },
+      { "slug": "zasoby-obliczeniowe-klaster-cato", "q": "Symulacja przerasta nasze serwery.", "to": "Zasoby obliczeniowe · klaster CATO" },
+      { "slug": "akwizycja-danych-dronami", "q": "Teren lub obiekt do zmapowania z powietrza.", "to": "Akwizycja danych dronami" }
+    ],
+    "allServices": "Wszystkie usługi",
+    "catalog": "Katalog aparatury",
+    "heroAlt": "Dłoń w rękawicy umieszcza próbkę na miedzianej płycie tyglowej pieca łukowego",
+    "heroCaption": "Wsad na miedzianej płycie tyglowej pieca łukowego Edmund Bühler AM 500. Topienie do 3500°C w atmosferze argonu.",
+    "aboutFactsLabel": "Centrum w liczbach",
+    "flagshipTitle": "Aparatura wiodąca",
+    "flagshipLede": "Sześć urządzeń, od których zwykle zaczyna się rozmowa o zleceniu. Pełną listę zawiera katalog aparatury.",
+    "flagshipService": "Usługa",
+    "quoteLabel": "Słowo Rektora UKSW",
+    "ctaTitle": "Opisz problem. Resztę dobierzemy.",
+    "ctaBody": "Nie musisz znać nazwy metody ani aparatu. Napisz, co chcesz zbadać lub wytworzyć, a biuro MCB przekaże zapytanie ekspertowi właściwej usługi."
+  },
+  "clusters": {
+    "title": "Cztery klastry, trzynaście usług",
+    "lede": "Każda usługa prowadzi do konkretnej aparatury i do osoby, która za nią odpowiada.",
+    "wholeCluster": "Cały klaster",
+    "servicesLabel": "Usługi klastra",
+    "total": "Razem {n} pozycji aparatury w czterech klastrach.",
+    "browseCatalog": "Przeglądaj katalog aparatury"
+  },
+  "services": {
+    "metaTitle": "Oferta: usługi badawcze MCB UKSW",
+    "metaDescription": "Trzynaście usług badawczych w czterech klastrach: inżynieria materiałowa, analiza materiałów, technologie cyfrowe, środowisko i społeczeństwo."
+  },
+  "service": {
+    "breadcrumb": "Ścieżka",
+    "scope": "Zakres usługi",
+    "pathLabel": "Na tej stronie",
+    "pathService": "Usługa",
+    "pathEquipment": "Aparatura",
+    "pathExpert": "Ekspert",
+    "ask": "Zapytaj o tę usługę",
+    "equipmentTitle": "Aparatura",
+    "equipmentLede": "Urządzenia, na których ta usługa jest wykonywana. Każde ma kartę z parametrami.",
+    "flagshipTag": "Aparat wiodący tej usługi",
+    "manufacturer": "Producent",
+    "otherEquipment": "Pozostała aparatura",
+    "equipmentColumn": "Aparatura",
+    "specsColumn": "Parametry",
+    "card": "Karta",
+    "cardOf": "Karta aparatu: {name}",
+    "whoTitle": "Kto prowadzi usługę",
+    "email": "E-mail",
+    "phone": "Telefon",
+    "phoneNote": "(sekretariat MCB)",
+    "routeNote": "Zapytanie trafia do biura MCB, które przekazuje je ekspertowi. Nazwa usługi będzie już wpisana w formularzu.",
+    "officeName": "Biuro MCB",
+    "officeRole": "Tę usługę koordynuje biuro Centrum. Opisz potrzebę, a dobierzemy zespół i aparaturę."
   },
   "catalog": { "empty": "Brak wyników spełniających wybrane kryteria." },
   "notFound": {

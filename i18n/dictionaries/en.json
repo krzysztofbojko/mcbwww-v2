@@ -12,7 +12,87 @@
     "readMore": "Read more",
     "contactCta": "Get in touch",
     "languageSwitcher": "Change language",
-    "skipToContent": "Skip to content"
+    "skipToContent": "Skip to content",
+    "equipmentCount": { "one": "{n} instrument", "few": "{n} instruments", "many": "{n} instruments", "other": "{n} instruments" },
+    "equipmentCard": "Instrument sheet"
+  },
+  "header": {
+    "home": "MCB UKSW, home page",
+    "mainNav": "Main navigation",
+    "cta": "Request a study",
+    "menu": "Menu",
+    "close": "Close",
+    "menuTitle": "Menu"
+  },
+  "localeSwitcher": { "pl": "Polski", "en": "English" },
+  "footer": {
+    "centre": "Multidisciplinary Research Centre",
+    "university": "Cardinal Stefan Wyszyński University in Warsaw",
+    "navLabel": "Site map",
+    "contactLabel": "Contact",
+    "partners": "Our partners include"
+  },
+  "home": {
+    "metaTitle": "MCB UKSW: laboratory research and services for industry",
+    "metaDescription": "UKSW laboratories in Dziekanów Leśny take on industrial commissions: materials testing, metal 3D printing, HPC computing, drone surveys and environmental analysis.",
+    "title": "Science you can commission.",
+    "lede": "The UKSW laboratories in Dziekanów Leśny take on work from industry: from analysing a cracked part to 3D printing a new alloy. {equipment} instruments, {services} services, experts you can name.",
+    "routerTitle": "Where do we start?",
+    "router": [
+      { "slug": "preparatyka-metalograficzna", "q": "A part cracked in service. Where did the defect come from?", "to": "Metallographic preparation" },
+      { "slug": "wytwarzanie-przyrostowe-metali-druk-3d", "q": "The prototype has to be metal, not plastic.", "to": "Additive manufacturing of metals" },
+      { "slug": "analiza-struktury-i-skladu-fazowego", "q": "See inside a sample without cutting it.", "to": "Structure analysis · micro-CT" },
+      { "slug": "zasoby-obliczeniowe-klaster-cato", "q": "The simulation has outgrown our servers.", "to": "Computing resources · CATO cluster" },
+      { "slug": "akwizycja-danych-dronami", "q": "A site or structure to map from the air.", "to": "Drone data acquisition" }
+    ],
+    "allServices": "All services",
+    "catalog": "Instrument catalogue",
+    "heroAlt": "A gloved hand places a sample on the copper crucible plate of an arc furnace",
+    "heroCaption": "Charge on the copper crucible plate of the Edmund Bühler AM 500 arc furnace. Melting up to 3500°C under argon.",
+    "aboutFactsLabel": "The centre in figures",
+    "flagshipTitle": "Flagship instruments",
+    "flagshipLede": "Six instruments where a conversation about a commission usually begins. The full list is in the instrument catalogue.",
+    "flagshipService": "Service",
+    "quoteLabel": "A word from the Rector of UKSW",
+    "ctaTitle": "Describe the problem. We will find the rest.",
+    "ctaBody": "You do not need to know the name of the method or the instrument. Tell us what you want to test or make, and the MCB office will pass your enquiry to the expert for the right service."
+  },
+  "clusters": {
+    "title": "Four clusters, thirteen services",
+    "lede": "Every service leads to specific instruments and to the person responsible for them.",
+    "wholeCluster": "Whole cluster",
+    "servicesLabel": "Cluster services",
+    "total": "{n} instruments in four clusters in total.",
+    "browseCatalog": "Browse the instrument catalogue"
+  },
+  "services": {
+    "metaTitle": "Services: research services of MCB UKSW",
+    "metaDescription": "Thirteen research services in four clusters: materials engineering, materials analysis, digital technologies, environment and society."
+  },
+  "service": {
+    "breadcrumb": "Breadcrumb",
+    "scope": "Scope of the service",
+    "pathLabel": "On this page",
+    "pathService": "Service",
+    "pathEquipment": "Instruments",
+    "pathExpert": "Expert",
+    "ask": "Ask about this service",
+    "equipmentTitle": "Instruments",
+    "equipmentLede": "The instruments this service runs on. Each has a sheet with its parameters.",
+    "flagshipTag": "Flagship instrument of this service",
+    "manufacturer": "Manufacturer",
+    "otherEquipment": "Other instruments",
+    "equipmentColumn": "Instrument",
+    "specsColumn": "Parameters",
+    "card": "Sheet",
+    "cardOf": "Instrument sheet: {name}",
+    "whoTitle": "Who runs the service",
+    "email": "Email",
+    "phone": "Phone",
+    "phoneNote": "(MCB office)",
+    "routeNote": "Your enquiry goes to the MCB office, which passes it on to the expert. The service name will already be filled in on the form.",
+    "officeName": "MCB office",
+    "officeRole": "This service is coordinated by the centre's office. Describe what you need and we will match the team and the instruments."
   },
   "catalog": { "empty": "No results match the selected criteria." },
   "notFound": {
