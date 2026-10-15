@@ -232,7 +232,7 @@
     "errors": {
       "required": "Fill in your name, e-mail and a description of the enquiry.",
       "email": "Enter a valid e-mail address, e.g. name@company.com.",
-      "too_long": "The text is too long: up to 5000 characters for the description and 200 for the name.",
+      "too_long": "One of the fields is too long. Shorten the text and send again.",
       "captcha": "The answer to the check question is wrong or the question has expired. Answer the new question.",
       "bad_request": "The form could not be read. Reload the page and try again.",
       "not_configured": "The form is temporarily unavailable. Write to {email} or call {phone}.",

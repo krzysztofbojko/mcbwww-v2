@@ -55,6 +55,12 @@ describe("validateContact", () => {
     expect(validateContact({ ...valid, email: "nope" })).toEqual({ ok: false, error: "email" });
     expect(validateContact({ ...valid, email: "a@nodot" })).toEqual({ ok: false, error: "email" });
     expect(validateContact({ ...valid, email: "a@b.pl\r\nBcc: x@y.pl" })).toEqual({ ok: false, error: "email" });
+    for (const bad of ["<a@b.pl>", "a@b.pl,x", "a@b.pl;c@d.pl", '"a"@b.pl', "a b@c.pl", "a@b_c.pl", "a@b..pl", "a@.pl"]) {
+      expect(validateContact({ ...valid, email: bad }), bad).toEqual({ ok: false, error: "email" });
+    }
+    for (const good of ["a.b+tag@sub.uksw.edu.pl", "x-y@my-domain.com"]) {
+      expect(validateContact({ ...valid, email: good }).ok, good).toBe(true);
+    }
   });
   it("limits lengths", () => {
     expect(validateContact({ ...valid, message: "x".repeat(5001) })).toEqual({ ok: false, error: "too_long" });

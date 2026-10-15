@@ -26,6 +26,36 @@ export const LIMITS = { name: 200, email: 254, message: 5000, company: 200, phon
 /** Upper bound for the raw request body; anything larger is refused before parsing. */
 export const MAX_BODY_BYTES = 32 * 1024;
 
+/**
+ * Reads a request body as UTF-8, stopping as soon as it exceeds `max` bytes (works without Content-Length,
+ * e.g. chunked uploads, so an oversized body is never buffered whole). null = too large.
+ */
+export async function readBodyLimited(request: Request, max: number = MAX_BODY_BYTES): Promise<string | null> {
+  const declared = Number(request.headers.get("content-length") ?? "0");
+  if (declared > max) return null;
+  if (!request.body) return "";
+  const reader = request.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let size = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    size += value.byteLength;
+    if (size > max) {
+      await reader.cancel().catch(() => {});
+      return null;
+    }
+    chunks.push(value);
+  }
+  const all = new Uint8Array(size);
+  let offset = 0;
+  for (const c of chunks) {
+    all.set(c, offset);
+    offset += c.byteLength;
+  }
+  return new TextDecoder().decode(all);
+}
+
 export const DEFAULT_TOPIC = "inne";
 
 /** General topics first, then every service (id = service slug, so ?temat={serviceSlug} links resolve). */
@@ -58,7 +88,12 @@ export function escapeHtml(s: string): string {
     .replace(/'/g, "&#39;");
 }
 
-const EMAIL_RE = /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)+$/;
+/** Local part without whitespace or <>,;"@; domain = dot-separated [A-Za-z0-9-] labels, at least one dot. */
+const EMAIL_RE = /^[^\s@<>,;"]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)+$/;
+
+export function isValidEmail(email: string): boolean {
+  return email.length <= LIMITS.email && EMAIL_RE.test(email);
+}
 
 function str(v: unknown): string {
   return typeof v === "string" ? v.trim() : "";
@@ -72,7 +107,7 @@ export function validateContact(
   const email = str(b.email);
   const message = str(b.message);
   if (!name || !email || !message) return { ok: false, error: "required" };
-  if (email.length > LIMITS.email || !EMAIL_RE.test(email)) return { ok: false, error: "email" };
+  if (!isValidEmail(email)) return { ok: false, error: "email" };
 
   const company = str(b.company);
   const phone = str(b.phone);

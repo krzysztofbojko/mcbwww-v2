@@ -24,6 +24,12 @@ describe("captcha", () => {
     expect(verifyCaptcha(undefined, "3")).toBe(false);
     expect(verifyCaptcha(c.token, 3)).toBe(false);
   });
+  it("a wrong answer spends the token: no guessing sums 2–18 against one token", () => {
+    const c = createCaptcha();
+    const right = solve(c.question);
+    expect(verifyCaptcha(c.token, String(Number(right) + 1))).toBe(false);
+    expect(verifyCaptcha(c.token, right)).toBe(false);
+  });
   it("rejects an expired token", () => {
     vi.useFakeTimers();
     try {

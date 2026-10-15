@@ -232,7 +232,7 @@
     "errors": {
       "required": "Uzupełnij imię i nazwisko, e-mail oraz opis zapytania.",
       "email": "Podaj poprawny adres e-mail, np. adres@firma.pl.",
-      "too_long": "Tekst jest za długi: opis do 5000 znaków, imię i nazwisko do 200.",
+      "too_long": "Jedno z pól jest za długie. Skróć tekst i wyślij ponownie.",
       "captcha": "Odpowiedź na pytanie kontrolne jest błędna albo pytanie wygasło. Odpowiedz na nowe pytanie.",
       "bad_request": "Nie udało się odczytać formularza. Odśwież stronę i spróbuj ponownie.",
       "not_configured": "Formularz jest chwilowo niedostępny. Napisz na {email} lub zadzwoń: {phone}.",

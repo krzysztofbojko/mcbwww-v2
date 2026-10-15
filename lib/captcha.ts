@@ -1,16 +1,24 @@
 import { createHmac, randomBytes, timingSafeEqual } from "crypto";
 
 /**
- * Stateless arithmetic captcha, ported from v1 (lib/captcha.ts) with the same logic: an HMAC-signed token
- * that carries only a salt and an expiry (never the answer), valid for 5 minutes and accepted once.
+ * Stateless arithmetic captcha, ported from v1 (lib/captcha.ts): an HMAC-signed token
+ * that carries only a salt and an expiry (never the answer), valid for 5 minutes and usable for one attempt.
  * Changes from v1: the secret is read from CAPTCHA_SECRET on every call (so it is never baked in at build time),
- * production refuses to run without it, and the question can be asked in English.
+ * production refuses to run without it, a wrong answer also spends the token, and the question can be asked in English.
  */
 
 const CAPTCHA_TTL_SECONDS = 5 * 60;
 
-/** Development only: a random per-process secret, so `npm run dev` works without an .env file. */
-const DEV_RUNTIME_SECRET = randomBytes(32).toString("hex");
+/**
+ * Development only: a random per-process secret, so `npm run dev` works without an .env file.
+ * Kept on globalThis: /api/captcha and /api/contact are separate bundles, each with its own copy of this module,
+ * and a per-module secret would make every token fail verification in the other route.
+ */
+const DEV_SECRET_KEY = Symbol.for("mcb.captcha.devSecret");
+function devSecret(): string {
+  const g = globalThis as Record<symbol, string | undefined>;
+  return (g[DEV_SECRET_KEY] ??= randomBytes(32).toString("hex"));
+}
 
 export class CaptchaNotConfiguredError extends Error {
   constructor() {
@@ -22,7 +30,7 @@ export class CaptchaNotConfiguredError extends Error {
 function getSecret(): string | null {
   const fromEnv = process.env.CAPTCHA_SECRET;
   if (fromEnv) return fromEnv;
-  return process.env.NODE_ENV === "production" ? null : DEV_RUNTIME_SECRET;
+  return process.env.NODE_ENV === "production" ? null : devSecret();
 }
 
 /** False in production when CAPTCHA_SECRET is missing; the API then answers „not_configured”. */
@@ -35,8 +43,10 @@ type CaptchaPayload = {
   exp: number;
 };
 
-// Used signatures, kept until they expire: protects against replaying a solved token.
-const usedSignatures = new Map<string, number>();
+// Spent signatures, kept until they expire. Shared across route bundles for the same reason as the dev secret.
+const USED_KEY = Symbol.for("mcb.captcha.usedSignatures");
+const usedSignatures: Map<string, number> = ((globalThis as Record<symbol, Map<string, number> | undefined>)[USED_KEY] ??=
+  new Map<string, number>());
 
 function cleanExpiredTokens() {
   const now = Math.floor(Date.now() / 1000);
@@ -95,6 +105,10 @@ export function verifyCaptcha(token: unknown, answer: unknown): boolean {
     const now = Math.floor(Date.now() / 1000);
     if (payload.exp < now) return false;
 
+    // Any attempt spends the token, right or wrong (deviation from v1, security ruling): otherwise a bot could
+    // try every sum 2–18 against one token. Only well-formed, unexpired tokens are recorded, and they expire.
+    usedSignatures.set(signature, payload.exp);
+
     const expectedSignature = computeSignature(secret, payload.salt, payload.exp, trimmedAnswer);
     const expectedBuf = Buffer.from(expectedSignature);
     const receivedBuf = Buffer.from(signature);
@@ -102,8 +116,6 @@ export function verifyCaptcha(token: unknown, answer: unknown): boolean {
     if (expectedBuf.length !== receivedBuf.length || !timingSafeEqual(expectedBuf, receivedBuf)) {
       return false;
     }
-
-    usedSignatures.set(signature, payload.exp);
     return true;
   } catch {
     return false;

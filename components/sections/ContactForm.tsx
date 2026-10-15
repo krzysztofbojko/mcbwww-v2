@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { Check, RotateCw } from "lucide-react";
 import type { Dictionary, Locale } from "@/i18n";
 // Narrow, client-safe module (imports only content/services), never the "@/content" barrel.
-import { DEFAULT_TOPIC, LIMITS, contactApiErrors, resolveTopic, type ContactApiError } from "@/lib/contact";
+import { DEFAULT_TOPIC, LIMITS, contactApiErrors, isValidEmail, resolveTopic, type ContactApiError } from "@/lib/contact";
 import { Button, cn } from "@/components/ui";
 
 export interface ContactTopicOption {
@@ -28,9 +28,10 @@ type Status =
   | { kind: "sending" }
   | { kind: "success"; email: string }
   | { kind: "error"; code: ContactApiError | "network" };
-type Captcha = { state: "loading" } | { state: "ready"; question: string; token: string } | { state: "error" };
-
-const EMAIL_RE = /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)+$/;
+type Captcha =
+  | { state: "loading" }
+  | { state: "ready"; question: string; token: string }
+  | { state: "error"; notConfigured: boolean };
 
 function isApiError(x: unknown): x is ContactApiError {
   return typeof x === "string" && (contactApiErrors as readonly string[]).includes(x);
@@ -80,11 +81,12 @@ export function ContactForm({
       if (res.ok && typeof data?.question === "string" && typeof data.token === "string") {
         setCaptcha({ state: "ready", question: data.question, token: data.token });
       } else {
-        setCaptcha({ state: "error" });
-        if (data?.error === "not_configured") setStatus({ kind: "error", code: "not_configured" });
+        const notConfigured = data?.error === "not_configured";
+        setCaptcha({ state: "error", notConfigured });
+        if (notConfigured) setStatus({ kind: "error", code: "not_configured" });
       }
     } catch {
-      setCaptcha({ state: "error" });
+      setCaptcha({ state: "error", notConfigured: false });
     }
   }, [locale]);
 
@@ -121,13 +123,18 @@ export function ContactForm({
     if (!values.message) errors.message = s.fieldRequired;
     if (!values.name) errors.name = s.fieldRequired;
     if (!values.email) errors.email = s.fieldRequired;
-    else if (!EMAIL_RE.test(values.email)) errors.email = s.errors.email;
+    else if (!isValidEmail(values.email)) errors.email = s.errors.email;
     if (!values.captchaAnswer) errors.captchaAnswer = s.fieldRequired;
     if (fd.get("consent") !== "on") errors.consent = s.consentRequired;
     setFieldErrors(errors);
     const firstInvalid = (["message", "name", "email", "captchaAnswer", "consent"] as Field[]).find((f) => errors[f]);
     if (firstInvalid) {
-      setStatus({ kind: "error", code: errors.email && !errors.message && !errors.name ? "email" : "required" });
+      // The form cannot be sent at all while the captcha is not configured: keep saying so, not „required”.
+      const notConfigured = captcha.state === "error" && captcha.notConfigured;
+      setStatus({
+        kind: "error",
+        code: notConfigured ? "not_configured" : errors.email && !errors.message && !errors.name ? "email" : "required",
+      });
       formRef.current?.querySelector<HTMLElement>(`[name="${firstInvalid}"]`)?.focus();
       return;
     }

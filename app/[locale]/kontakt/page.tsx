@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Fragment, Suspense } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { experts, site } from "@/content";
@@ -27,7 +27,8 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
     topics: { general: options.slice(0, GENERAL_TOPIC_COUNT), services: options.slice(GENERAL_TOPIC_COUNT) },
     office: { email: site.email, phone: site.phone },
   };
-  const [street, city] = site.address.split(/,\s*/);
+  // „ul. …, 05-092 …” → one line per comma-separated part, however many there are.
+  const addressLines = site.address.split(/,\s*/).filter(Boolean);
 
   return (
     <main id="main">
@@ -56,9 +57,12 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
             >
               <dt className="text-burgundy-tint">{s.address}</dt>
               <dd className="m-0 mb-4 font-display text-display-s sm:mb-0">
-                {street}
-                <br />
-                {city}
+                {addressLines.map((line, i) => (
+                  <Fragment key={i}>
+                    {i > 0 ? <br /> : null}
+                    {line}
+                  </Fragment>
+                ))}
               </dd>
               <dt className="text-burgundy-tint">{s.phone}</dt>
               <dd className="m-0 mb-4 sm:mb-0">

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { isCaptchaConfigured, verifyCaptcha } from "@/lib/captcha";
-import { MAX_BODY_BYTES, buildEmailHtml, buildSubject, validateContact, type ContactApiError } from "@/lib/contact";
+import { MAX_BODY_BYTES, readBodyLimited, buildEmailHtml, buildSubject, validateContact, type ContactApiError } from "@/lib/contact";
 
 export const dynamic = "force-dynamic";
 
@@ -14,16 +14,13 @@ function fail(error: ContactApiError, status: number) {
  * 400 bad_request | required | email | too_long | captcha · 503 not_configured · 500 send_failed · 200 { ok: true }.
  */
 export async function POST(request: Request) {
-  const declared = Number(request.headers.get("content-length") ?? "0");
-  if (declared > MAX_BODY_BYTES) return fail("too_long", 400);
-
-  let raw: string;
+  let raw: string | null;
   try {
-    raw = await request.text();
+    raw = await readBodyLimited(request, MAX_BODY_BYTES);
   } catch {
     return fail("bad_request", 400);
   }
-  if (Buffer.byteLength(raw) > MAX_BODY_BYTES) return fail("too_long", 400);
+  if (raw === null) return fail("too_long", 400);
 
   let body: unknown;
   try {
