@@ -104,3 +104,18 @@ describe("slugify", () => {
     expect(slugify("Łódź Żółć")).toBe("lodz-zolc");
   });
 });
+
+describe("cross-references kept in sync by hand", () => {
+  it("every home router slug in both dictionaries resolves to a service", async () => {
+    const pl = (await import("@/i18n/dictionaries/pl.json")).default;
+    const en = (await import("@/i18n/dictionaries/en.json")).default;
+    for (const dict of [pl, en]) {
+      expect(dict.home.router.length).toBeGreaterThan(0);
+      for (const r of dict.home.router) expect(getService(r.slug), r.slug).toBeDefined();
+    }
+    expect(en.home.router.map((r) => r.slug)).toEqual(pl.home.router.map((r) => r.slug));
+  });
+  it("each instrument sits in the same cluster as its service", () => {
+    for (const e of equipment) expect(e.clusterId, e.slug).toBe(getService(e.serviceSlug)!.clusterId);
+  });
+});

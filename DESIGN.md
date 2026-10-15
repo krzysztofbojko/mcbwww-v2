@@ -277,7 +277,7 @@ Płaskie, kwadratowe, jedno wypełnienie; strzałka (`ArrowRight`, 16 px) tylko 
 - **Block:** wariant na całą szerokość ze strzałką przy prawej krawędzi (menu mobilne, blok eksperta).
 
 ### Rycina (Figure)
-Sygnatura systemu. Fotografia przycięta do zadanych proporcji (`aspect`, `position` trzymają znak wodny źródła poza kadrem) na tle `paper-deep`, pod nią podpis `small`: kursywa „Ryc. N” w atramencie i opis w `ink-muted`. Rycina bez własnej fotografii aparatu pokazuje fotografię usługi z podpisem, który mówi to wprost. Tylko obraz LCP strony dostaje `preload` (hero, rycina usługi lub aparatu, budynek w kontakcie, pierwsza rycina galerii); reszta ładuje się leniwie.
+Sygnatura systemu. Fotografia przycięta do zadanych proporcji (`aspect`, `position` trzymają znak wodny źródła poza kadrem) na tle `paper-deep`, pod nią podpis `small`: kursywa „Ryc. N” w atramencie i opis w `ink-muted`. Rycina bez własnej fotografii aparatu pokazuje ilustrację usługi (`/images/oferta/*.png`) z podpisem, który mówi to wprost; ilustracja nigdy nie jest podpisywana jako fotografia z laboratorium. Tylko obraz LCP strony dostaje `preload` (hero, rycina usługi lub aparatu, budynek w kontakcie, pierwsza rycina galerii); reszta ładuje się leniwie.
 
 ### Numer klastra (Eyebrow)
 Cyfry Brygady w bordo z `lnum`/`tnum`. Dwa rozmiary: wbudowany przy nazwie klastra (okruszki, filtry, karta parametrów) i indeksowy (44 px, od 768 px `clamp(3rem, 6vw, 5.5rem)`) na początku wiersza spisu klastrów. To identyfikator klastra, nie etykieta nad nagłówkiem.
