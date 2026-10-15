@@ -13,6 +13,7 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Skip /api, /_next and any path whose last segment has a file extension.
-  matcher: ["/((?!api|_next|.*\\..*).*)"],
+  // Skip /api and /_next (whole segments only) and files: a last segment ending in an extension that starts with a letter
+  // (.ico, .txt, .jpg, .woff2). "/oferta/v1.0" or "/v1.0/oferta" are pages and still get the locale redirect.
+  matcher: ["/((?!(?:api|_next)(?:/|$)|.*\\.[a-zA-Z][a-zA-Z0-9]*$).*)"],
 };

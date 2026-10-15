@@ -33,6 +33,12 @@ test("/ redirects to /pl", async ({ page }) => {
   await expect(page).toHaveURL(/\/pl\/?$/);
 });
 
+test("a dot in a page path does not bypass the locale redirect", async ({ request }) => {
+  const res = await request.get("/oferta/v1.0", { maxRedirects: 0 });
+  expect(res.status()).toBe(307);
+  expect(res.headers()["location"]).toMatch(/\/pl\/oferta\/v1\.0$/);
+});
+
 for (const url of ["/pl/oferta/xyz", "/pl/infrastruktura/xyz", "/de"]) {
   test(`${url} returns 404`, async ({ page }) => {
     const res = await page.goto(url);
