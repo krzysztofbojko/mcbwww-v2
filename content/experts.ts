@@ -5,7 +5,7 @@ export const experts: Expert[] = [
     "id": "marek-muzyk",
     "name": "ks. dr inż. Marek Muzyk",
     "role": {
-      "pl": "Dyrektor MCB, Ekspert Inżynieria Materiałowa"
+      "pl": "Dyrektor MCB, ekspert – inżynieria materiałowa"
     },
     "email": "m.muzyk@uksw.edu.pl"
   },
@@ -13,7 +13,7 @@ export const experts: Expert[] = [
     "id": "piotr-kwasniak",
     "name": "dr inż. Piotr Kwaśniak",
     "role": {
-      "pl": "Ekspert - Projektowanie Materiałów, HPC"
+      "pl": "Ekspert – projektowanie materiałów, HPC"
     },
     "email": "p.kwasniak@uksw.edu.pl"
   },
@@ -21,7 +21,7 @@ export const experts: Expert[] = [
     "id": "samih-haj-ibrahim",
     "name": "Samih Haj Ibrahim",
     "role": {
-      "pl": "Ekspert - Wytwarzanie Stopów, Badania Mechaniczne"
+      "pl": "Ekspert – wytwarzanie stopów, badania mechaniczne"
     },
     "email": "s.hajibrahim@uksw.edu.pl"
   },
@@ -29,7 +29,7 @@ export const experts: Expert[] = [
     "id": "bartlomiej-wysocki",
     "name": "dr inż. Bartłomiej Wysocki",
     "role": {
-      "pl": "Ekspert - Druk 3D, Analiza Struktury"
+      "pl": "Ekspert – druk 3D, analiza struktury"
     },
     "email": "b.wysocki@uksw.edu.pl"
   },
@@ -37,7 +37,7 @@ export const experts: Expert[] = [
     "id": "agnieszka-chmielewska-wysocka",
     "name": "dr inż. Agnieszka Chmielewska-Wysocka",
     "role": {
-      "pl": "Ekspert - Wytwarzanie Przyrostowe, Stopy Ni-Ti"
+      "pl": "Ekspert – wytwarzanie przyrostowe, stopy Ni-Ti"
     },
     "email": "a.chmielewska@uksw.edu.pl"
   },
@@ -45,7 +45,7 @@ export const experts: Expert[] = [
     "id": "krzysztof-bojko",
     "name": "inż. Krzysztof Bojko",
     "role": {
-      "pl": "Specjalista - Serwery, Usługi, HPC"
+      "pl": "Specjalista – serwery, usługi, HPC"
     },
     "email": "k.bojko@uksw.edu.pl"
   },
@@ -53,7 +53,7 @@ export const experts: Expert[] = [
     "id": "marcin-sas-kulczycki",
     "name": "Marcin Sas-Kulczycki",
     "role": {
-      "pl": "Specjalista - Monitorowanie, HPC, ICT"
+      "pl": "Specjalista – monitorowanie, HPC, ICT"
     },
     "email": "m.sas-kulczycki@uksw.edu.pl"
   },
@@ -61,7 +61,7 @@ export const experts: Expert[] = [
     "id": "wojciech-nowak",
     "name": "Wojciech Nowak",
     "role": {
-      "pl": "Specjalista - Drony, VR, Skanowanie 3D"
+      "pl": "Specjalista – drony, VR, skanowanie 3D"
     },
     "email": "w.nowak@uksw.edu.pl"
   },
@@ -69,7 +69,7 @@ export const experts: Expert[] = [
     "id": "maciej-sierakowski",
     "name": "mgr Maciej Sierakowski",
     "role": {
-      "pl": "Ekspert - Laboratorium Środowiskowe"
+      "pl": "Ekspert – laboratorium środowiskowe"
     },
     "email": "m.sierakowski@uksw.edu.pl"
   },
@@ -77,7 +77,7 @@ export const experts: Expert[] = [
     "id": "marek-robak",
     "name": "dr Marek Robak",
     "role": {
-      "pl": "Ekspert - Medioznawstwo"
+      "pl": "Ekspert – medioznawstwo"
     },
     "email": "m.robak@uksw.edu.pl"
   }

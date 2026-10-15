@@ -216,7 +216,7 @@ export function ContactForm({
           name="topic"
           defaultValue={initialTopic}
           aria-describedby={`${id("topic")}-hint`}
-          className={cn(control, "cursor-pointer appearance-none truncate border-b bg-no-repeat pr-8")}
+          className={cn(control, "cursor-pointer appearance-none truncate border-b bg-no-repeat pr-8 [&_optgroup]:bg-paper [&_optgroup]:text-ink [&_option]:bg-paper [&_option]:text-ink")}
           style={{ backgroundImage: chevron, backgroundPosition: "right 2px center", backgroundSize: "16px" }}
         >
           <optgroup label={s.topicGeneral}>
@@ -362,7 +362,7 @@ export function ContactForm({
         className={cn("outline-none md:col-span-2", errorText ? "" : "sr-only")}
       >
         {errorText ? (
-          <p className="m-0 border-l-2 border-paper bg-burgundy-deep px-4 py-3 text-ui text-paper">{errorText}</p>
+          <p className="m-0 border border-paper/60 bg-burgundy-deep px-4 py-3 text-ui text-paper">{errorText}</p>
         ) : sending ? (
           s.sending
         ) : null}
@@ -372,7 +372,7 @@ export function ContactForm({
 }
 
 const control =
-  "block w-full rounded-none border-paper/60 bg-transparent py-2 pb-2.5 text-body text-paper placeholder:text-burgundy-tint/70 transition-colors hover:border-paper aria-[invalid=true]:border-paper aria-[invalid=true]:border-b-2";
+  "block w-full rounded-none border-paper/60 bg-transparent py-2 pb-2.5 text-body text-paper placeholder:text-burgundy-tint/80 transition-colors hover:border-paper aria-[invalid=true]:border-paper aria-[invalid=true]:border-b-2";
 
 const chevron = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23F4F1EB' stroke-width='1.5'%3E%3Cpath d='M3 6l5 5 5-5'/%3E%3C/svg%3E")`;
 

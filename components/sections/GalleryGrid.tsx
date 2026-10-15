@@ -131,6 +131,8 @@ export function GalleryGrid({ rows, locale, strings: s }: GalleryGridProps) {
                     aspect={item.aspect}
                     position={item.position}
                     sizes={row.length >= 3 ? "(min-width: 768px) 33vw, 100vw" : "(min-width: 768px) 50vw, 100vw"}
+                    // The first plate is the page's LCP image; the rest load lazily.
+                    preload={i === 0}
                     locale={locale}
                     className="[&_figcaption_span]:transition-colors group-hover:[&_figcaption_span:first-child]:text-burgundy"
                   />
@@ -169,7 +171,7 @@ export function GalleryGrid({ rows, locale, strings: s }: GalleryGridProps) {
                 type="button"
                 ref={closeRef}
                 onClick={close}
-                className="inline-flex cursor-pointer items-center gap-2 py-2 text-ui text-paper transition-colors hover:text-ink-subtle"
+                className="inline-flex cursor-pointer items-center gap-2 py-2 text-ui text-paper underline-offset-[0.25em] hover:underline"
               >
                 {s.close}
                 <X aria-hidden className="size-4" strokeWidth={1.5} />

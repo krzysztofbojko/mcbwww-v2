@@ -14,7 +14,7 @@ export function ServicePath({
 }) {
   const linkCls = "shrink-0 text-ink-subtle no-underline transition-colors hover:text-paper";
   return (
-    <nav aria-label={label} data-tone="ink" className="sticky top-0 z-10 bg-ink text-paper">
+    <nav aria-label={label} data-tone="ink" data-sticky-path className="sticky top-0 z-10 bg-ink text-paper">
       <Container className="flex min-h-[52px] items-center gap-4 overflow-x-auto text-ui whitespace-nowrap md:min-h-[60px] md:gap-6">
         <a href="#usluga" className={linkCls}>
           {links.service}

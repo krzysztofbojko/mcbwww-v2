@@ -105,6 +105,11 @@
     -webkit-text-size-adjust: 100%;
     scrollbar-color: var(--color-rule) var(--color-paper);
     color-scheme: light;
+    -webkit-tap-highlight-color: rgb(124 30 45 / 0.12);
+  }
+  /* The service page's sticky path bar must not cover anchors or the focused element (keyboard Tab scrolls). */
+  html:has([data-sticky-path]) {
+    scroll-padding-top: 4.5rem;
   }
   body {
     background: var(--color-paper);

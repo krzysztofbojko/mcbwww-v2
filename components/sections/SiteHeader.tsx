@@ -20,7 +20,9 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
           aria-label={dict.header.home}
           className="mr-auto flex items-baseline gap-3 no-underline"
         >
-          <span className="font-display text-statement leading-none font-bold tracking-[-0.01em] text-burgundy">MCB</span>
+          <span translate="no" className="font-display text-statement leading-none font-bold tracking-[-0.01em] text-burgundy">
+            MCB
+          </span>
           <span className="max-w-[15em] text-small leading-tight text-ink-muted max-xl:hidden">{dict.site.name}</span>
         </Link>
         <NavLinks items={items} label={dict.header.mainNav} className="max-lg:hidden" />

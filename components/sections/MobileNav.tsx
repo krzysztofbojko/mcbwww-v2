@@ -112,13 +112,14 @@ export function MobileNav({ locale, items, homeHref, cta, labels, languageNames,
         aria-label={labels.title}
         onKeyDown={trapFocus}
         onClick={closeOnLink}
-        className="m-0 h-dvh max-h-none w-full max-w-none overflow-y-auto border-0 bg-paper p-0 text-ink backdrop:bg-ink/40"
+        className="m-0 h-dvh max-h-none w-full max-w-none overflow-y-auto overscroll-contain border-0 bg-paper p-0 text-ink backdrop:bg-ink/40"
       >
         <Container className="flex min-h-full flex-col">
           <div className="flex items-center justify-between py-4">
             <Link
               href={homeHref}
               aria-label={labels.home}
+              translate="no"
               className="font-display text-statement font-bold text-burgundy no-underline"
             >
               MCB

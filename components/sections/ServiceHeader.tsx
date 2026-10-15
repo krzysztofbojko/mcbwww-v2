@@ -20,7 +20,7 @@ export function ServiceHeader({
 }) {
   const title = t(service.title, locale);
   return (
-    <section id="usluga" aria-labelledby="service-title" className="scroll-mt-16 bg-paper">
+    <section id="usluga" aria-labelledby="service-title" className="bg-paper">
       <Container>
         <nav aria-label={dict.service.breadcrumb} className="pt-5 text-small text-ink-muted">
           <ol className="m-0 flex list-none flex-wrap items-baseline gap-3 p-0">
@@ -45,12 +45,14 @@ export function ServiceHeader({
           {service.image ? (
             <Figure
               src={service.image}
-              alt={title}
+              alt={dict.service.plateAlt.replace("{service}", title)}
+              number={1}
+              caption={dict.service.plateCaption}
               aspect="420 / 596"
               sizes="(min-width: 768px) 33vw, 100vw"
               preload
               locale={locale}
-              className="col-span-12 -mx-gutter max-md:[&>div]:aspect-[3/2]! md:col-span-4 md:mx-0"
+              className="col-span-12 -mx-gutter max-md:[&>div]:aspect-[3/2]! md:col-span-4 md:mx-0 [&_figcaption]:px-gutter md:[&_figcaption]:px-0"
             />
           ) : null}
           <div className="col-span-12 md:col-span-7 md:col-start-6">

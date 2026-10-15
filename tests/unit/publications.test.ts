@@ -4,6 +4,7 @@ import {
   formatBudget,
   formatPeriod,
   groupByYear,
+  projectDescription,
   projectsByStatus,
   publicationLink,
   publicationYears,
@@ -88,5 +89,16 @@ describe("formatPeriod", () => {
   });
   it("returns unparseable input unchanged", () => {
     expect(formatPeriod("2024")).toBe("2024");
+  });
+});
+
+describe("projectDescription", () => {
+  it("hides a description that only repeats the summary", () => {
+    expect(projectDescription({ summary: "Cel projektu.", description: " Cel projektu. " })).toBeUndefined();
+    expect(projectDescription({ summary: "Cel projektu.", description: "" })).toBeUndefined();
+    expect(projectDescription({ summary: "Cel projektu." })).toBeUndefined();
+  });
+  it("keeps a description that adds to the summary", () => {
+    expect(projectDescription({ summary: "Cel.", description: "Cel. Metody i wyniki." })).toBe("Cel. Metody i wyniki.");
   });
 });

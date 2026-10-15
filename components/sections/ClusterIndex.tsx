@@ -48,7 +48,7 @@ export function ClusterIndex({ locale, dict, variant }: ClusterIndexProps) {
             >
               <Eyebrow number={cluster.number} size="index" className="col-span-4 row-start-1 md:col-span-2" />
               <div className="col-span-12 md:col-span-6 md:col-start-3 md:row-start-1 lg:col-span-4">
-                <NameTag className="mb-4 text-statement leading-tight">{t(cluster.title, locale)}</NameTag>
+                <NameTag className="mb-4 text-display-s">{t(cluster.title, locale)}</NameTag>
                 <p className="m-0 max-w-[30em] text-ui text-ink-muted">{t(cluster.description, locale)}</p>
                 {isPage ? null : (
                   <Button variant="link" href={localePath(locale, `/oferta#${cluster.id}`)} className="mt-5">
@@ -77,9 +77,10 @@ export function ClusterIndex({ locale, dict, variant }: ClusterIndexProps) {
               </ul>
               {plate?.image ? (
                 <div className="relative col-span-4 col-start-9 row-start-1 aspect-[3/4] overflow-hidden bg-paper-deep md:col-start-9 lg:col-span-2 lg:col-start-11">
+                  {/* Illustrative plate: the row's services are listed in text beside it, so it carries no name. */}
                   <Image
                     src={plate.image}
-                    alt={t(plate.title, locale)}
+                    alt=""
                     fill
                     sizes="(min-width: 1024px) 15vw, 33vw"
                     className="object-cover"

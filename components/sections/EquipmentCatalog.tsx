@@ -165,7 +165,7 @@ function CatalogView({
       }}
     >
       {/* Search: the large serif field across the page. */}
-      <div className="mt-10 flex items-center gap-4 border-b border-ink pb-3 md:mt-14 md:gap-5 md:pb-5">
+      <div className="mt-10 flex items-center gap-4 border-b border-ink pb-3 transition-[border-color,box-shadow] focus-within:border-burgundy focus-within:shadow-[inset_0_-1px_0_var(--color-burgundy)] md:mt-14 md:gap-5 md:pb-5">
         <Search aria-hidden className="size-5 shrink-0 text-ink" strokeWidth={1.5} />
         <label htmlFor="catalog-q" className="sr-only">
           {s.searchLabel}
@@ -182,7 +182,7 @@ function CatalogView({
           value={filter.query}
           onChange={(e: ChangeEvent<HTMLInputElement>) => onQuery?.(e.target.value)}
           readOnly={!interactive}
-          className="min-w-0 flex-1 bg-transparent font-display text-[1.125rem] leading-tight text-ink outline-none placeholder:text-ink-subtle md:text-[clamp(1.375rem,2vw,1.75rem)] [&::-webkit-search-cancel-button]:hidden"
+          className="min-w-0 flex-1 bg-transparent font-display text-[1.125rem] leading-tight text-ink outline-none placeholder:text-ink-muted md:text-[clamp(1.375rem,2vw,1.75rem)] [&::-webkit-search-cancel-button]:hidden"
         />
         <kbd
           title={s.searchShortcut}

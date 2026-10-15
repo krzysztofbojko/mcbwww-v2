@@ -78,3 +78,13 @@ export function formatPeriod(raw: string): string {
       .join(".");
   return `${pad(dates[0])} – ${pad(dates[1])}`;
 }
+
+/**
+ * The long description worth folding under „Opis projektu”, or undefined when there is nothing beyond the summary
+ * (v1 stored the same text in both fields, which made the disclosure repeat what is already on screen).
+ */
+export function projectDescription(p: Pick<Project, "summary" | "description">): string | undefined {
+  const d = p.description?.trim();
+  if (!d || d === p.summary.trim()) return undefined;
+  return d;
+}

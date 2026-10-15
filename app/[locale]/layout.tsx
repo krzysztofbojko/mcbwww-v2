@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { getDictionary, isLocale, locales } from "@/i18n";
 import { SiteFooter } from "@/components/sections/SiteFooter";
@@ -9,6 +9,9 @@ import { fontVariables } from "../fonts";
 import "../globals.css";
 
 export const dynamicParams = false;
+
+/** Browser UI tinted with the paper ground. */
+export const viewport: Viewport = { themeColor: "#f4f1eb" };
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));

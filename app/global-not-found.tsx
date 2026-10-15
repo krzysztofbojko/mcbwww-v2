@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { getDictionary } from "@/i18n";
 import { SiteFooter } from "@/components/sections/SiteFooter";
 import { SiteHeader } from "@/components/sections/SiteHeader";
 import { NotFoundContent } from "@/components/sections/NotFoundContent";
 import { fontVariables } from "./fonts";
 import "./globals.css";
+
+export const viewport: Viewport = { themeColor: "#f4f1eb" };
 
 export const metadata: Metadata = {
   title: "Nie znaleziono strony · Page not found · MCB UKSW",

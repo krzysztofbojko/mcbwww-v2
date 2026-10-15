@@ -72,6 +72,8 @@
   "service": {
     "breadcrumb": "Ścieżka",
     "scope": "Zakres usługi",
+    "plateAlt": "Fotografia z laboratorium usługi „{service}”",
+    "plateCaption": "Z laboratorium usługi, MCB UKSW w Dziekanowie Leśnym.",
     "pathLabel": "Na tej stronie",
     "pathService": "Usługa",
     "pathEquipment": "Aparatura",

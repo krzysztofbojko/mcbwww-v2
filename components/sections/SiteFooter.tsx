@@ -52,6 +52,7 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
         </div>
         <p
           aria-hidden
+          translate="no"
           className="mt-16 mb-0 font-display text-[min(18vw,16.5rem)] leading-[0.9] font-medium tracking-[-0.035em] whitespace-nowrap md:mt-24"
         >
           {dict.site.short}

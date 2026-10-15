@@ -53,6 +53,17 @@ describe("integrity", () => {
     expect(getService("zasoby-obliczeniowe-klaster-cato")!.title.pl).toBe("Zasoby obliczeniowe (klaster CATO)");
     expect(getService("medioznawstwo-i-analizy-ux")!.title.pl).toBe("Medioznawstwo i analizy UX");
   });
+  it("writes Polish expert roles in sentence case with a typographic dash", () => {
+    for (const e of experts) {
+      expect(e.role.pl).not.toMatch(/ - /);
+      // After the leading word no capitalised common word; acronyms (HPC, ICT, VR, MCB) stay upper case.
+      const words = e.role.pl.split(/[\s,–]+/).slice(1).filter(Boolean);
+      for (const w of words) {
+        const titleCased = w.length > 1 && w === w[0].toUpperCase() + w.slice(1).toLowerCase();
+        expect(titleCased, `${e.id}: ${w}`).toBe(false);
+      }
+    }
+  });
   it("has EN for cluster and service titles", () => {
     for (const c of clusters) { expect(c.title.en).toBeTruthy(); expect(c.description.en).toBeTruthy(); }
     for (const s of services) expect(s.title.en).toBeTruthy();
