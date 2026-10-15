@@ -1,0 +1,10 @@
+services:
+  web:
+    build: .
+    image: mcb-website-v2
+    ports:
+      - "3000:3000"
+    env_file:
+      - path: .env
+        required: false
+    restart: unless-stopped
