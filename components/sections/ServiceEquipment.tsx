@@ -37,10 +37,11 @@ export function ServiceEquipment({
           <Rule tone="ink" />
           <div className="grid-12 gap-y-6 pt-6">
             <div className="col-span-12 md:col-span-5">
-              <Tag className="mb-3 block">{d.flagshipTag}</Tag>
               <Heading as="h3" size="m" className="max-w-[14em]">
                 {flagship.name}
               </Heading>
+              {/* Status note under the name, not a kicker above it. */}
+              <Tag className="mt-2 block">{d.flagshipTag}</Tag>
               {flagship.flagshipHighlight ? (
                 <p className="mt-4 mb-0 max-w-[24em] text-ui">{t(flagship.flagshipHighlight, locale)}</p>
               ) : null}
