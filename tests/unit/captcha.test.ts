@@ -1,5 +1,6 @@
+import { createHmac } from "crypto";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { createCaptcha, isCaptchaConfigured, verifyCaptcha } from "@/lib/captcha";
+import { MAX_USED_SIGNATURES, createCaptcha, isCaptchaConfigured, usedSignatureCount, verifyCaptcha } from "@/lib/captcha";
 
 afterEach(() => {
   vi.unstubAllEnvs();
@@ -63,5 +64,47 @@ describe("captcha", () => {
     expect(isCaptchaConfigured()).toBe(true);
     const c = createCaptcha();
     expect(verifyCaptcha(c.token, solve(c.question))).toBe(true);
+  });
+});
+
+describe("captcha spent-token store (no unauthenticated growth)", () => {
+  const forge = (exp: number, sig = "A".repeat(43)) =>
+    `${Buffer.from(JSON.stringify({ salt: "x", exp })).toString("base64url")}.${sig}`;
+
+  it("a forged signature is rejected and not recorded", () => {
+    const before = usedSignatureCount();
+    const now = Math.floor(Date.now() / 1000);
+    for (let i = 0; i < 50; i++) expect(verifyCaptcha(forge(now + 60, `forged${i}${"x".repeat(1900)}`), "5")).toBe(false);
+    expect(usedSignatureCount()).toBe(before);
+  });
+
+  it("a far-future exp is rejected (even when correctly signed) and not recorded", () => {
+    vi.stubEnv("CAPTCHA_SECRET", "known-secret");
+    const exp = 9_999_999_999;
+    const sig = createHmac("sha256", "known-secret").update(`x:${exp}:5`).digest("base64url");
+    const before = usedSignatureCount();
+    expect(verifyCaptcha(forge(exp, sig), "5")).toBe(false);
+    expect(usedSignatureCount()).toBe(before);
+  });
+
+  it("a genuine token is recorded once, right or wrong answer", () => {
+    const c = createCaptcha();
+    const before = usedSignatureCount();
+    expect(verifyCaptcha(c.token, "99")).toBe(false);
+    expect(usedSignatureCount()).toBe(before + 1);
+    expect(verifyCaptcha(c.token, solve(c.question))).toBe(false);
+    expect(usedSignatureCount()).toBe(before + 1);
+  });
+
+  it("the store is capped", () => {
+    for (let i = 0; i < MAX_USED_SIGNATURES + 50; i++) {
+      const c = createCaptcha();
+      verifyCaptcha(c.token, solve(c.question));
+    }
+    expect(usedSignatureCount()).toBeLessThanOrEqual(MAX_USED_SIGNATURES);
+    // The newest token is still protected against replay after eviction.
+    const c = createCaptcha();
+    expect(verifyCaptcha(c.token, solve(c.question))).toBe(true);
+    expect(verifyCaptcha(c.token, solve(c.question))).toBe(false);
   });
 });

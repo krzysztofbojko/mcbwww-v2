@@ -43,10 +43,19 @@ type CaptchaPayload = {
   exp: number;
 };
 
-// Spent signatures, kept until they expire. Shared across route bundles for the same reason as the dev secret.
+/** Upper bound on remembered signatures; when full, expired ones go first, then the oldest. */
+export const MAX_USED_SIGNATURES = 10_000;
+
+// Spent signatures of GENUINE tokens (HMAC verified), kept until they expire. Shared across route bundles for
+// the same reason as the dev secret. Insertion order = age, so the first key is the oldest.
 const USED_KEY = Symbol.for("mcb.captcha.usedSignatures");
 const usedSignatures: Map<string, number> = ((globalThis as Record<symbol, Map<string, number> | undefined>)[USED_KEY] ??=
   new Map<string, number>());
+
+/** For tests and diagnostics. */
+export function usedSignatureCount(): number {
+  return usedSignatures.size;
+}
 
 function cleanExpiredTokens() {
   const now = Math.floor(Date.now() / 1000);
@@ -54,6 +63,19 @@ function cleanExpiredTokens() {
     if (exp < now) usedSignatures.delete(sig);
   }
 }
+
+function recordUsed(signature: string, exp: number) {
+  if (usedSignatures.size >= MAX_USED_SIGNATURES) cleanExpiredTokens();
+  while (usedSignatures.size >= MAX_USED_SIGNATURES) {
+    const oldest = usedSignatures.keys().next().value;
+    if (oldest === undefined) break;
+    usedSignatures.delete(oldest);
+  }
+  usedSignatures.set(signature, exp);
+}
+
+/** Every answer the captcha can have: a, b ∈ 1..9. */
+const POSSIBLE_SUMS = Array.from({ length: 17 }, (_, i) => i + 2);
 
 function encode(value: string) {
   return Buffer.from(value).toString("base64url");
@@ -93,30 +115,32 @@ export function verifyCaptcha(token: unknown, answer: unknown): boolean {
   const [encoded, signature] = token.split(".");
   if (!encoded || !signature) return false;
 
-  cleanExpiredTokens();
-
-  // Each solved token is accepted only once.
+  // Each genuine token gets one attempt.
   if (usedSignatures.has(signature)) return false;
 
   try {
     const payload = JSON.parse(Buffer.from(encoded, "base64url").toString()) as CaptchaPayload;
-    if (!payload.salt || typeof payload.exp !== "number") return false;
+    if (typeof payload?.salt !== "string" || !payload.salt || typeof payload.exp !== "number") return false;
 
+    // Expired, or further in the future than any token we issue: reject before recording anything.
     const now = Math.floor(Date.now() / 1000);
-    if (payload.exp < now) return false;
+    if (payload.exp < now || payload.exp > now + CAPTCHA_TTL_SECONDS) return false;
 
-    // Any attempt spends the token, right or wrong (deviation from v1, security ruling): otherwise a bot could
-    // try every sum 2–18 against one token. Only well-formed, unexpired tokens are recorded, and they expire.
-    usedSignatures.set(signature, payload.exp);
-
-    const expectedSignature = computeSignature(secret, payload.salt, payload.exp, trimmedAnswer);
-    const expectedBuf = Buffer.from(expectedSignature);
+    // Which sum was this token signed for? Checking all 17 possible sums tells a genuine token (exactly one match)
+    // from a forged one (none). Forged tokens are rejected without being remembered, so they cannot grow the store.
     const receivedBuf = Buffer.from(signature);
-
-    if (expectedBuf.length !== receivedBuf.length || !timingSafeEqual(expectedBuf, receivedBuf)) {
-      return false;
+    // All 17 are always computed (no early exit), so the timing does not reveal the signed sum.
+    let signedSum: number | undefined;
+    for (const sum of POSSIBLE_SUMS) {
+      const expectedBuf = Buffer.from(computeSignature(secret, payload.salt, payload.exp, sum));
+      if (expectedBuf.length === receivedBuf.length && timingSafeEqual(expectedBuf, receivedBuf)) signedSum = sum;
     }
-    return true;
+    if (signedSum === undefined) return false;
+
+    // Genuine: any attempt spends it, right or wrong (security ruling, deviation from v1), so a bot cannot
+    // try every sum against one token.
+    recordUsed(signature, payload.exp);
+    return Number(trimmedAnswer) === signedSum;
   } catch {
     return false;
   }
