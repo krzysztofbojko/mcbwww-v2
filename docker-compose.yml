@@ -1,6 +1,11 @@
 services:
   web:
-    build: .
+    build:
+      context: .
+      args:
+        # Build-time value (baked into canonical URLs, sitemap and robots); compose reads it from .env next to this file.
+        # Changing it requires rebuilding the image: docker compose up --build -d
+        SITE_URL: ${SITE_URL:-}
     image: mcb-website-v2
     ports:
       - "3000:3000"

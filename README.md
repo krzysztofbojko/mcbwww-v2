@@ -15,7 +15,7 @@ cp .env.example .env   # uzupełnij wartości
 npm run dev
 ```
 
-Aplikacja działa pod http://localhost:3000 (`/` przekierowuje na `/pl`). Build produkcyjny: `npm run build && npm start`.
+Aplikacja działa pod http://localhost:3000 (`/` przekierowuje na `/pl`). Build produkcyjny wymaga `SITE_URL` (lokalnie: `SITE_URL=http://localhost:3000 npm run build && npm start`).
 
 ## Zmienne środowiskowe
 
@@ -23,7 +23,7 @@ Wzór w `.env.example`; plik `.env` nie jest commitowany.
 
 | Zmienna | Do czego służy |
 | --- | --- |
-| `SITE_URL` | Publiczny adres strony (np. `https://mcb.uksw.edu.pl`), używany w canonical, hreflang, sitemap, robots i Open Graph. **Na produkcji musi być ustawiona.** |
+| `SITE_URL` | Publiczny adres strony (np. `https://mcb.uksw.edu.pl`), używany w canonical, hreflang, sitemap, robots, Open Graph i JSON-LD. **Wartość czasu budowania:** strony, `sitemap.xml` i `robots.txt` są prerenderowane, więc adres jest wbudowywany w build. `next build` kończy się błędem, gdy `SITE_URL` nie jest ustawiona albo nie jest bezwzględnym adresem http(s). Zmiana wymaga ponownego zbudowania (w Dockerze: przebudowania obrazu); ustawienie jej tylko w środowisku działającego kontenera nic nie zmienia. |
 | `RESEND_API_KEY` | Klucz API Resend, przez który wysyłane są zapytania z formularza kontaktowego. |
 | `CONTACT_TO` | Adresy odbiorców zapytań (jeden lub kilka, rozdzielone przecinkami). |
 | `CONTACT_FROM` | Nadawca wiadomości, np. `MCB UKSW <formularz@twoja-domena.pl>`. Domena musi być zweryfikowana w Resend (rekordy SPF/DKIM). |
@@ -39,15 +39,17 @@ docker compose up --build -d    # http://localhost:3000
 docker compose down
 ```
 
+`docker compose` przekazuje `SITE_URL` z pliku `.env` obok `docker-compose.yml` jako argument budowania (`build.args`), bo jest potrzebna już podczas `next build`. Bez niej budowanie obrazu się nie powiedzie. Po zmianie `SITE_URL` przebuduj obraz: `docker compose up --build -d`. Pozostałe zmienne (`RESEND_API_KEY`, `CAPTCHA_SECRET`, ...) są czytane w czasie działania z `env_file`. Ręcznie: `docker build --build-arg SITE_URL=https://mcb.uksw.edu.pl -t mcb-website-v2 .`
+
 Obraz (wieloetapowy, Node 22 Alpine) korzysta z `output: "standalone"`, działa jako użytkownik bez uprawnień roota, a `WORKDIR` to korzeń buildu standalone, dzięki czemu obrazek Open Graph znajduje font `assets/fonts/Brygada1918.ttf` (dołączany do trace przez `outputFileTracingIncludes` w `next.config.ts`).
 
 ## Testy
 
 - `npm test` – testy jednostkowe (Vitest, `tests/unit`)
-- `npm run e2e` – testy end-to-end (Playwright, `tests/e2e`). Przy pierwszym uruchomieniu: `npx playwright install chromium`. Konfiguracja sama buduje i startuje aplikację (`npm run build && npm start`) albo użyje serwera już działającego na porcie 3000.
+- `npm run e2e` – testy end-to-end (Playwright, `tests/e2e`). Przy pierwszym uruchomieniu: `npx playwright install chromium`. Konfiguracja sama buduje i startuje aplikację (`npm run build && npm start` z `SITE_URL=http://localhost:3000`) albo użyje serwera już działającego na porcie 3000.
 - `npm run lint`, `npm run typecheck` – ESLint i TypeScript
 
-Pełna weryfikacja: `npm run lint && npm run typecheck && npm test && npm run build && npm run e2e`.
+Pełna weryfikacja: `npm run lint && npm run typecheck && npm test && SITE_URL=http://localhost:3000 npm run build && npm run e2e`.
 
 ## Migracja treści z v1
 

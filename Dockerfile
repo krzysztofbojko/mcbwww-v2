@@ -14,6 +14,10 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
+# SITE_URL is baked into the prerendered pages, sitemap.xml and robots.txt, so it must be known at build time.
+# docker compose passes it from .env (build.args); `next build` fails when it is missing or not an http(s) URL.
+ARG SITE_URL
+ENV SITE_URL=$SITE_URL
 RUN npm run build
 
 # 3. Runtime image: the standalone output is the app root, so process.cwd() resolves assets/fonts/Brygada1918.ttf

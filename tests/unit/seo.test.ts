@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { organizationJsonLd, pageMetadata, serviceJsonLd, siteUrl, jsonLdString } from "@/lib/seo";
 import sitemap from "@/app/sitemap";
+import { siteUrlBuildError } from "@/lib/site-url-check";
 import { equipment, services } from "@/content";
 
 describe("siteUrl", () => {
@@ -12,6 +13,19 @@ describe("siteUrl", () => {
     expect(siteUrl()).toBe("https://mcb.example.pl");
     if (prev === undefined) delete process.env.SITE_URL;
     else process.env.SITE_URL = prev;
+  });
+});
+
+describe("siteUrlBuildError (production build guard)", () => {
+  it("rejects a missing, relative or non-http SITE_URL with a clear message", () => {
+    expect(siteUrlBuildError(undefined)).toMatch(/SITE_URL is not set/);
+    expect(siteUrlBuildError("  ")).toMatch(/SITE_URL is not set/);
+    expect(siteUrlBuildError("mcb.uksw.edu.pl")).toMatch(/not an absolute URL/);
+    expect(siteUrlBuildError("ftp://mcb.uksw.edu.pl")).toMatch(/http or https/);
+  });
+  it("accepts absolute http(s) origins", () => {
+    expect(siteUrlBuildError("https://mcb.uksw.edu.pl")).toBeNull();
+    expect(siteUrlBuildError("http://localhost:3000/")).toBeNull();
   });
 });
 
