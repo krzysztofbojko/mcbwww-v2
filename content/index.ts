@@ -3,11 +3,13 @@ import { clusters } from "./clusters";
 import { services } from "./services";
 import { experts } from "./experts";
 import { site } from "./site";
+import { equipmentPhotos, type EquipmentPhoto } from "./equipment-photos";
 import equipmentJson from "./equipment.json";
 import projectsJson from "./projects.json";
 import publicationsJson from "./publications.json";
 
 export type * from "./types";
+export type { EquipmentPhoto };
 export { clusters, services, experts, site };
 
 export const equipment = equipmentJson as Equipment[];
@@ -34,6 +36,11 @@ export function getService(slug: string): Service | undefined {
 
 export function getEquipment(slug: string): Equipment | undefined {
   return equipment.find((e) => e.slug === slug);
+}
+
+/** A photograph of the instrument itself, when one is known; otherwise undefined. */
+export function equipmentPhoto(slug: string): EquipmentPhoto | undefined {
+  return equipmentPhotos[slug];
 }
 
 export function servicesByCluster(id: ClusterId): Service[] {
@@ -67,10 +74,22 @@ export function meaningfulSpecs(item: Equipment): string[] {
   });
 }
 
-export function filterEquipment(items: Equipment[], q: { clusterId?: ClusterId; query?: string }): Equipment[] {
+export interface EquipmentQuery {
+  clusterId?: ClusterId;
+  /** Keep items of any of these services; empty or absent = no service filter. */
+  serviceSlugs?: string[];
+  flagshipOnly?: boolean;
+  /** Free text, matched diacritic-insensitively against name, full name, manufacturer and specs. */
+  query?: string;
+}
+
+export function filterEquipment(items: Equipment[], q: EquipmentQuery): Equipment[] {
   const needle = q.query ? fold(q.query.trim()) : "";
+  const inServices = q.serviceSlugs && q.serviceSlugs.length > 0 ? new Set(q.serviceSlugs) : null;
   return items.filter((e) => {
     if (q.clusterId && e.clusterId !== q.clusterId) return false;
+    if (inServices && !inServices.has(e.serviceSlug)) return false;
+    if (q.flagshipOnly && !e.isFlagship) return false;
     if (!needle) return true;
     return [e.name, e.fullName, e.manufacturer ?? "", ...e.specs].some((f) => fold(f).includes(needle));
   });

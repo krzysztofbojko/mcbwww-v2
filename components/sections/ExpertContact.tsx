@@ -7,19 +7,63 @@ export interface ExpertContactProps {
   serviceSlug: string;
   locale: Locale;
   dict: Dictionary;
+  /** section: full-width „Kto prowadzi usługę” (service page) · aside: compact paper-deep box (equipment sheet). */
+  variant?: "section" | "aside";
+  /** Label of the enquiry action; defaults to „Zapytaj o tę usługę”. */
+  askLabel?: string;
+  /** aside only: accessible heading of the box. */
+  title?: string;
 }
 
 /**
  * „Kto prowadzi usługę”: the named expert(s) with e-mail and the MCB office phone, and one enquiry action
  * that opens the contact form with the service filled in. No experts ⇒ the general MCB contact from `site`.
  */
-export function ExpertContact({ experts, serviceSlug, locale, dict }: ExpertContactProps) {
+export function ExpertContact({
+  experts,
+  serviceSlug,
+  locale,
+  dict,
+  variant = "section",
+  askLabel,
+  title,
+}: ExpertContactProps) {
   const d = dict.service;
   const people =
     experts.length > 0
       ? experts.map((e) => ({ key: e.id, name: e.name, role: t(e.role, locale), email: e.email }))
       : [{ key: "mcb", name: d.officeName, role: d.officeRole, email: site.email }];
   const phoneHref = `tel:${site.phone.replace(/\s/g, "")}`;
+  const askHref = `${localePath(locale, "/kontakt")}?temat=${serviceSlug}`;
+
+  if (variant === "aside") {
+    return (
+      <section aria-label={title} className="bg-paper-deep px-gutter py-8 md:px-8">
+        <ul className="m-0 flex list-none flex-col gap-7 p-0">
+          {people.map((p) => (
+            <li key={p.key}>
+              <Heading as="p" size="s">
+                {p.name}
+              </Heading>
+              <p className="mt-2 mb-0 text-ui text-ink-muted">{p.role}</p>
+              <p className="mt-4 mb-0 text-ui">
+                <a href={`mailto:${p.email}`} className="break-all">
+                  {p.email}
+                </a>
+              </p>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-4 mb-0 text-small text-ink-muted">
+          {d.phone}: <a href={phoneHref}>{site.phone}</a>
+          {experts.length > 0 ? ` ${d.phoneNote}` : null}
+        </p>
+        <Button variant="primary" href={askHref} arrow block className="mt-7">
+          {askLabel ?? d.ask}
+        </Button>
+      </section>
+    );
+  }
 
   return (
     <div className="grid-12 gap-y-6">
@@ -49,8 +93,8 @@ export function ExpertContact({ experts, serviceSlug, locale, dict }: ExpertCont
           ))}
         </ul>
         <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
-          <Button variant="primary" href={`${localePath(locale, "/kontakt")}?temat=${serviceSlug}`} arrow>
-            {d.ask}
+          <Button variant="primary" href={askHref} arrow>
+            {askLabel ?? d.ask}
           </Button>
           <p className="m-0 max-w-[30em] text-small text-ink-muted">{d.routeNote}</p>
         </div>
