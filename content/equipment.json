@@ -1,0 +1,690 @@
+[
+  {
+    "slug": "pakiet-obliczeniowy-vasp-vienna-ab-initio-simulation-package",
+    "serviceSlug": "projektowanie-materialow",
+    "clusterId": "material-engineering",
+    "name": "Pakiet obliczeniowy VASP (Vienna Ab initio Simulation Package)",
+    "fullName": "Pakiet obliczeniowy VASP (Vienna Ab initio Simulation Package)",
+    "specs": [
+      "obliczenia kwantowe DFT"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "atat-alloy-theoretic-automated-toolkit",
+    "serviceSlug": "projektowanie-materialow",
+    "clusterId": "material-engineering",
+    "name": "ATAT (Alloy Theoretic Automated Toolkit)",
+    "fullName": "ATAT (Alloy Theoretic Automated Toolkit)",
+    "specs": [
+      "modelowanie stopów"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "quantum-espresso",
+    "serviceSlug": "projektowanie-materialow",
+    "clusterId": "material-engineering",
+    "name": "Quantum Espresso",
+    "fullName": "Quantum Espresso",
+    "specs": [
+      "pakiety ab initio"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "narzedzia-do-wizualizacji-i-przetwarzania-wynikow-obliczen",
+    "serviceSlug": "projektowanie-materialow",
+    "clusterId": "material-engineering",
+    "name": "Narzędzia do wizualizacji i przetwarzania wyników obliczeń",
+    "fullName": "Narzędzia do wizualizacji i przetwarzania wyników obliczeń",
+    "specs": [
+      "Projektowanie"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "wlasne-zasoby-obliczeniowe-i-przestrzen-dyskowa",
+    "serviceSlug": "projektowanie-materialow",
+    "clusterId": "material-engineering",
+    "name": "Własne zasoby obliczeniowe i przestrzeń dyskowa",
+    "fullName": "Własne zasoby obliczeniowe i przestrzeń dyskowa",
+    "specs": [
+      "Projektowanie"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "piec-lukowy-edmund-buhler-am-500",
+    "serviceSlug": "wytwarzanie-stopow-metali",
+    "clusterId": "material-engineering",
+    "name": "Piec łukowy Edmund Bühler AM 500",
+    "fullName": "Piec łukowy Edmund Bühler GmbH AM 500 – topienie wsadu o masie do 500 g w temperaturze do 3500°C, dostępne różne wersje płyt tyglowych",
+    "specs": [
+      "do 3500°C",
+      "Wsad do 500 g",
+      "Atmosfera argonu",
+      "Płyty tyglowe Cu"
+    ],
+    "isFlagship": true,
+    "flagshipHighlight": {
+      "pl": "Topienie w temperaturze do 3500°C w atmosferze ochronnej argonu"
+    }
+  },
+  {
+    "slug": "piec-poziomy-jednostrefowy-rurowy",
+    "serviceSlug": "wytwarzanie-stopow-metali",
+    "clusterId": "material-engineering",
+    "name": "Piec poziomy jednostrefowy (rurowy)",
+    "fullName": "Piec poziomy jednostrefowy (rurowy) – możliwa obróbka cieplna w atmosferze ochronnej, maks. temp. pracy ciągłej 1310°C, średnica rury 150 mm, dł. strefy grzejnej 500 mm",
+    "specs": [
+      "do 1310°C"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "piec-muflowy",
+    "serviceSlug": "wytwarzanie-stopow-metali",
+    "clusterId": "material-engineering",
+    "name": "Piec muflowy",
+    "fullName": "Piec muflowy – atmosfera powietrza, temperatura maksymalna: 1200°C",
+    "specs": [
+      "do 1200°C"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "walcarka-elektryczna",
+    "serviceSlug": "wytwarzanie-stopow-metali",
+    "clusterId": "material-engineering",
+    "name": "Walcarka elektryczna",
+    "fullName": "Walcarka elektryczna – zakres roboczy od 10 mm do 1 mm",
+    "specs": [
+      "zakres 10-1 mm"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "nozyce-gilotynowe",
+    "serviceSlug": "wytwarzanie-stopow-metali",
+    "clusterId": "material-engineering",
+    "name": "Nożyce gilotynowe",
+    "fullName": "Nożyce gilotynowe – maksymalna długość cięcia: 1320 mm",
+    "specs": [
+      "długość 1320 mm"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "drukarka-3d-do-metalu-aconity-mini",
+    "serviceSlug": "wytwarzanie-przyrostowe-metali-druk-3d",
+    "clusterId": "material-engineering",
+    "name": "Drukarka 3D do metalu Aconity mini",
+    "fullName": "Laboratoryjne urządzenie do druku 3D w technologii topienia laserowego w złożu proszku Aconity 3D (Aconity mini)",
+    "specs": [
+      "Technologia PBF-LB",
+      "Podgrzewanie do 800°C",
+      "Nanoproszki",
+      "Stopy Ti, Al, Inconel"
+    ],
+    "isFlagship": true,
+    "flagshipHighlight": {
+      "pl": "Selektywne topienie laserowe proszków metali z podgrzewaniem do 800°C"
+    }
+  },
+  {
+    "slug": "reometr-do-analizy-wielkosci-czastek-w-zadanej-temperaturze-i-wilgotnosci-anton-paar-mcr-302e",
+    "serviceSlug": "wytwarzanie-przyrostowe-metali-druk-3d",
+    "clusterId": "material-engineering",
+    "name": "Reometr do analizy wielkości cząstek w zadanej temperaturze i wilgotności Anton Paar MCR 302e",
+    "fullName": "Reometr do analizy wielkości cząstek w zadanej temperaturze i wilgotności Anton Paar MCR 302e",
+    "manufacturer": "Anton Paar",
+    "specs": [
+      "Wytwarzanie"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "analizator-wielkosci-i-sferycznosci-czastek-kamika-mini-30",
+    "serviceSlug": "wytwarzanie-przyrostowe-metali-druk-3d",
+    "clusterId": "material-engineering",
+    "name": "Analizator wielkości i sferyczności cząstek Kamika Mini 30",
+    "fullName": "Analizator wielkości i sferyczności cząstek Kamika Mini 30",
+    "manufacturer": "Kamika",
+    "specs": [
+      "Wytwarzanie"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "oprogramowanie-inzynierskie",
+    "serviceSlug": "wytwarzanie-przyrostowe-metali-druk-3d",
+    "clusterId": "material-engineering",
+    "name": "Oprogramowanie inżynierskie",
+    "fullName": "Oprogramowanie inżynierskie: Siemens NX, Magics Materialise, ANSYS",
+    "specs": [
+      "CAD/CAE",
+      "symulacje MES"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "urzadzenia-do-druku-3d-z-filamentow-apium-p220-prusa-mk3-ratrig-v-core3-zmorph-i-wytwarzania-filamentow-3devo-composer-450",
+    "serviceSlug": "wytwarzanie-przyrostowe-tworzyw-sztucznych-i-ceramiki",
+    "clusterId": "material-engineering",
+    "name": "Urządzenia do druku 3D z filamentów (Apium P220, Prusa MK3+, Ratrig V-Core3, ZMorph) i wytwarzania filamentów (3devo Composer 450)",
+    "fullName": "Urządzenia do druku 3D z filamentów (Apium P220, Prusa MK3+, Ratrig V-Core3, ZMorph) i wytwarzania filamentów (3devo Composer 450)",
+    "manufacturer": "Apium",
+    "specs": [
+      "druk PEEK"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "urzadzenia-przemyslowe-do-druku-3d-zywic-fotoutwardzalnych-sla-3d-systems-projet-7000-hd-i-proszkow-gipsowych-cjp-3d-systems-projet-cjp-660-pro",
+    "serviceSlug": "wytwarzanie-przyrostowe-tworzyw-sztucznych-i-ceramiki",
+    "clusterId": "material-engineering",
+    "name": "Urządzenia przemysłowe do druku 3D żywic fotoutwardzalnych SLA (3D Systems ProJet 7000 HD) i proszków gipsowych CJP (3D Systems ProJet CJP 660 Pro)",
+    "fullName": "Urządzenia przemysłowe do druku 3D żywic fotoutwardzalnych SLA (3D Systems ProJet 7000 HD) i proszków gipsowych CJP (3D Systems ProJet CJP 660 Pro)",
+    "manufacturer": "3D Systems",
+    "specs": [
+      "SLA fotopolimery",
+      "proszki gipsowe CJP"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "urzadzenie-do-druku-3d-proszkow-polimerowych-w-technologii-sls-sinterit-lisa-pro",
+    "serviceSlug": "wytwarzanie-przyrostowe-tworzyw-sztucznych-i-ceramiki",
+    "clusterId": "material-engineering",
+    "name": "Urządzenie do druku 3D proszków polimerowych w technologii SLS (Sinterit Lisa Pro)",
+    "fullName": "Urządzenie do druku 3D proszków polimerowych w technologii SLS (Sinterit Lisa Pro)",
+    "manufacturer": "Sinterit",
+    "specs": [
+      "spiekanie SLS"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "zestaw-urzadzen-do-druku-3d-zywic-fotoutwardzalnych-na-potrzeby-medycyny-sla-formlabs-form-3b",
+    "serviceSlug": "wytwarzanie-przyrostowe-tworzyw-sztucznych-i-ceramiki",
+    "clusterId": "material-engineering",
+    "name": "Zestaw urządzeń do druku 3D żywic fotoutwardzalnych na potrzeby medycyny SLA (Formlabs, Form 3B+)",
+    "fullName": "Zestaw urządzeń do druku 3D żywic fotoutwardzalnych na potrzeby medycyny SLA (Formlabs, Form 3B+)",
+    "manufacturer": "Formlabs",
+    "specs": [
+      "żywice medyczne"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "elektroerozyjna-drazarka-drutowa-simos-dm-sc32",
+    "serviceSlug": "preparatyka-metalograficzna",
+    "clusterId": "material-engineering",
+    "name": "Elektroerozyjna drążarka drutowa Simos DM SC32",
+    "fullName": "Elektroerozyjna drążarka drutowa Simos DM SC32",
+    "manufacturer": "Simos",
+    "specs": [
+      "drążenie drutowe EDM"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "zestaw-urzadzen-do-automatycznej-preparatyki-metalograficznej-firmy-atm-pila-tarczowa-qcut-250a-praska-na-goraco-opal-410-szlifierko-polerka-saphir-550",
+    "serviceSlug": "preparatyka-metalograficzna",
+    "clusterId": "material-engineering",
+    "name": "Zestaw urządzeń do automatycznej preparatyki metalograficznej firmy ATM (piła tarczowa Qcut 250A, praska na gorąco Opal 410, szlifierko-polerka Saphir 550)",
+    "fullName": "Zestaw urządzeń do automatycznej preparatyki metalograficznej firmy ATM (piła tarczowa Qcut 250A, praska na gorąco Opal 410, szlifierko-polerka Saphir 550)",
+    "manufacturer": "ATM",
+    "specs": [
+      "automatyczna preparatyka"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "mikroskop-cyfrowy-keyence-vhx-7000-oraz-mikroskop-metalograficzny-nikon-eclipse-ma-100n",
+    "serviceSlug": "preparatyka-metalograficzna",
+    "clusterId": "material-engineering",
+    "name": "Mikroskop cyfrowy Keyence VHX-7000 oraz mikroskop metalograficzny Nikon Eclipse MA 100N",
+    "fullName": "Mikroskop cyfrowy Keyence VHX-7000 oraz mikroskop metalograficzny Nikon Eclipse MA 100N",
+    "manufacturer": "Keyence",
+    "specs": [
+      "optyka 4K / 3D"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "dygestoria-laboratoryjne-z-wyciagami-do-pracy-z-odczynnikami-chemicznymi",
+    "serviceSlug": "preparatyka-metalograficzna",
+    "clusterId": "material-engineering",
+    "name": "Dygestoria laboratoryjne z wyciągami do pracy z odczynnikami chemicznymi",
+    "fullName": "Dygestoria laboratoryjne z wyciągami do pracy z odczynnikami chemicznymi",
+    "specs": [
+      "Preparatyka"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "mikrotomograf-rentgenowski-nikon-xt-h-225-st-2x",
+    "serviceSlug": "analiza-struktury-i-skladu-fazowego",
+    "clusterId": "analysis-control",
+    "name": "Mikrotomograf rentgenowski Nikon XT H 225 ST 2x",
+    "fullName": "System rentgenowskiej mikrotomografii komputerowej Nikon XT H 225 ST 2x",
+    "specs": [
+      "Napięcie do 225 kV",
+      "Podwójne źródło (Dual-target)",
+      "Metrologia 3D",
+      "Rozdzielczość submikronowa"
+    ],
+    "isFlagship": true,
+    "flagshipHighlight": {
+      "pl": "Rentgenowska tomografia 3D próbek i nieniszcząca kontrola geometrii NDT"
+    }
+  },
+  {
+    "slug": "skaningowy-mikroskop-elektronowy-axia-chemisem",
+    "serviceSlug": "analiza-struktury-i-skladu-fazowego",
+    "clusterId": "analysis-control",
+    "name": "Skaningowy mikroskop elektronowy Axia ChemiSEM",
+    "fullName": "Skaningowy mikroskop elektronowy ThermoFisher Scientific Axia ChemiSEM",
+    "specs": [
+      "Zintegrowany detektor EDS",
+      "Analiza pierwiastkowa na żywo",
+      "Niska próżnia",
+      "Wysoka rozdzielczość"
+    ],
+    "isFlagship": true,
+    "flagshipHighlight": {
+      "pl": "Skaningowa mikroskopia SEM z analizą chemiczną EDS w czasie rzeczywistym"
+    }
+  },
+  {
+    "slug": "dyfraktometr-rentgenowski-bruker-d2-phaser",
+    "serviceSlug": "analiza-struktury-i-skladu-fazowego",
+    "clusterId": "analysis-control",
+    "name": "Dyfraktometr rentgenowski Bruker D2 Phaser",
+    "fullName": "Dyfraktometr rentgenowski Bruker D2 Phaser",
+    "manufacturer": "Bruker",
+    "specs": [
+      "dyfrakcja rentgenowska XRD"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "optyczny-mikroskop-pomiarowy-z-funkcja-profilometru-keyence-vhx-7000",
+    "serviceSlug": "analiza-struktury-i-skladu-fazowego",
+    "clusterId": "analysis-control",
+    "name": "Optyczny mikroskop pomiarowy z funkcją profilometru Keyence VHX-7000",
+    "fullName": "Optyczny mikroskop pomiarowy z funkcją profilometru Keyence VHX-7000",
+    "manufacturer": "Keyence",
+    "specs": [
+      "optyka 4K / 3D"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "maszyna-wytrzymalosciowa-cometech-qc-505m2-50-kn",
+    "serviceSlug": "badania-wlasciwosci-mechanicznych",
+    "clusterId": "analysis-control",
+    "name": "Maszyna wytrzymałościowa Cometech QC-505M2 50 kN",
+    "fullName": "Maszyna wytrzymałościowa Cometech QC-505M2 50 kN",
+    "manufacturer": "Cometech",
+    "specs": [
+      "siła do 50 kN",
+      "temp. do 1000°C"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "system-do-badan-probek-miniaturowych-tts-190-small-punch-test-system",
+    "serviceSlug": "badania-wlasciwosci-mechanicznych",
+    "clusterId": "analysis-control",
+    "name": "System do badań próbek miniaturowych TTS 190 Small Punch Test system",
+    "fullName": "System do badań próbek miniaturowych TTS 190 Small Punch Test system",
+    "specs": [
+      "mikropróbki SPT"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "twardosciomierz-piis-3000",
+    "serviceSlug": "badania-wlasciwosci-mechanicznych",
+    "clusterId": "analysis-control",
+    "name": "Twardościomierz PIIS 3000",
+    "fullName": "Twardościomierz PIIS 3000",
+    "specs": [
+      "pomiary nieniszczące NDT"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "platforma-bezzalogowa-dji-matrice-300-rtk",
+    "serviceSlug": "akwizycja-danych-dronami",
+    "clusterId": "analysis-control",
+    "name": "Platforma bezzałogowa DJI Matrice 300 RTK",
+    "fullName": "Platforma bezzałogowa DJI Matrice 300 RTK (udźwig do 5 kg, czas lotu do 45 min)",
+    "specs": [
+      "Dokładność RTK 1 cm",
+      "Kamera Zenmuse P1 45 MP",
+      "Kamera multispektralna Altum-PT",
+      "Czas lotu do 55 min"
+    ],
+    "isFlagship": true,
+    "flagshipHighlight": {
+      "pl": "Precyzyjna fotogrametria RTK, mapowanie 3D i teledetekcja multispektralna"
+    }
+  },
+  {
+    "slug": "kamera-pelnoklatkowa-fotogrametryczna-zenmuse-p1-oraz-kamera-zenmuse-x7",
+    "serviceSlug": "akwizycja-danych-dronami",
+    "clusterId": "analysis-control",
+    "name": "Kamera pełnoklatkowa fotogrametryczna Zenmuse P1 oraz kamera Zenmuse X7",
+    "fullName": "Kamera pełnoklatkowa fotogrametryczna Zenmuse P1 oraz kamera Zenmuse X7",
+    "specs": [
+      "matryca pełnoklatkowa 45MP"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "kamera-multispektralna-micasense-altum-pt",
+    "serviceSlug": "akwizycja-danych-dronami",
+    "clusterId": "analysis-control",
+    "name": "Kamera multispektralna Micasense Altum-PT",
+    "fullName": "Kamera multispektralna Micasense Altum-PT",
+    "specs": [
+      "kamera multispektralna"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "zestaw-miernictwa-precyzyjnego",
+    "serviceSlug": "akwizycja-danych-dronami",
+    "clusterId": "analysis-control",
+    "name": "Zestaw miernictwa precyzyjnego",
+    "fullName": "Zestaw miernictwa precyzyjnego: GNSS Trimble i GNSS RTK Spectra SP85",
+    "manufacturer": "Trimble",
+    "specs": [
+      "geodezja GNSS RTK"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "oprogramowanie-analityczne",
+    "serviceSlug": "akwizycja-danych-dronami",
+    "clusterId": "analysis-control",
+    "name": "Oprogramowanie analityczne",
+    "fullName": "Oprogramowanie analityczne: Pix4D oraz Trimble Business Center",
+    "manufacturer": "Pix4D",
+    "specs": [
+      "fotogrametria 3D"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "superkomputer-cato-ibm-ac922-gpu-v100",
+    "serviceSlug": "zasoby-obliczeniowe-klaster-cato",
+    "clusterId": "digital-tech",
+    "name": "Superkomputer CATO (IBM AC922 & GPU V100)",
+    "fullName": "Klaster CATO: 8 węzłów obliczeniowych IBM AC922 (2x CPU 16core, 1TB RAM, 2x GPU NVIDIA V100 32GB, sieć Infiniband)",
+    "specs": [
+      "8 węzłów IBM AC922",
+      "16x GPU NVIDIA V100 32GB",
+      "Sieć Infiniband 100Gb/s",
+      "3,7 PB pamięci masowej"
+    ],
+    "isFlagship": true,
+    "flagshipHighlight": {
+      "pl": "Obliczenia dużej skali HPC, AI, symulacje molekularne i modelowanie ab initio"
+    }
+  },
+  {
+    "slug": "przestrzen-dyskowa-klastra",
+    "serviceSlug": "zasoby-obliczeniowe-klaster-cato",
+    "clusterId": "digital-tech",
+    "name": "Przestrzeń dyskowa klastra",
+    "fullName": "Przestrzeń dyskowa klastra: 1,3 PB SSD + 2,4 PB SATA",
+    "specs": [
+      "1,3 PB SSD",
+      "2,4 PB SATA"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "klaster-infrastruktury-aplikacyjnej",
+    "serviceSlug": "zasoby-obliczeniowe-klaster-cato",
+    "clusterId": "digital-tech",
+    "name": "Klaster infrastruktury aplikacyjnej",
+    "fullName": "Klaster infrastruktury aplikacyjnej: 9 serwerów Dell, Ceph (system składowania 140TB NVMe), oVirt (wirtualizacja), sieć Palo Alto i Cisco",
+    "manufacturer": "Dell",
+    "specs": [
+      "Ceph NVMe",
+      "chmura oVirt"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "skanery-3d-swiatla-strukturalnego",
+    "serviceSlug": "skanowanie-3d-digitalizacja-i-vr",
+    "clusterId": "digital-tech",
+    "name": "Skanery 3D światła strukturalnego",
+    "fullName": "Skanery 3D światła strukturalnego: Artec Leo, Artec Space Spider",
+    "manufacturer": "Artec",
+    "specs": [
+      "dokładność 0,05 mm",
+      "mobilny 3D"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "skanery-3d-laserowe",
+    "serviceSlug": "skanowanie-3d-digitalizacja-i-vr",
+    "clusterId": "digital-tech",
+    "name": "Skanery 3D laserowe",
+    "fullName": "Skanery 3D laserowe: Leica P40, Leica BLK 360 G2",
+    "manufacturer": "Leica",
+    "specs": [
+      "skaner LiDAR 270m",
+      "milion pkt/s"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "gogle-i-zestawy-vr",
+    "serviceSlug": "skanowanie-3d-digitalizacja-i-vr",
+    "clusterId": "digital-tech",
+    "name": "Gogle i zestawy VR",
+    "fullName": "Gogle i zestawy VR: HTC Vive Pro 2 (z modułem bezprzewodowym), HTC VIVE XR, Varjo Aero z kontrolerami Valve Index, Meta Quest 2",
+    "manufacturer": "HTC",
+    "specs": [
+      "VR rozdzielczość oka"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "zestaw-do-fotogrametrii-wykorzystujacy-polaryzacje-krzyzowa",
+    "serviceSlug": "skanowanie-3d-digitalizacja-i-vr",
+    "clusterId": "digital-tech",
+    "name": "Zestaw do fotogrametrii wykorzystujący polaryzację krzyżową",
+    "fullName": "Zestaw do fotogrametrii wykorzystujący polaryzację krzyżową",
+    "specs": [
+      "Skanowanie"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "pakiet-sledczy-magnet-axiom-complete",
+    "serviceSlug": "informatyka-sledcza",
+    "clusterId": "digital-tech",
+    "name": "Pakiet śledczy Magnet AXIOM Complete",
+    "fullName": "Pakiet śledczy Magnet AXIOM Complete",
+    "manufacturer": "Magnet",
+    "specs": [
+      "analiza kryminalistyczna"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "system-analityczny-cellebrite-inspector",
+    "serviceSlug": "informatyka-sledcza",
+    "clusterId": "digital-tech",
+    "name": "System analityczny Cellebrite Inspector",
+    "fullName": "System analityczny Cellebrite Inspector",
+    "manufacturer": "Cellebrite",
+    "specs": [
+      "ekstrakcja ze smartfonów"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "mediaimager-gms",
+    "serviceSlug": "informatyka-sledcza",
+    "clusterId": "digital-tech",
+    "name": "Mediaimager GMS",
+    "fullName": "Mediaimager GMS",
+    "specs": [
+      "Informatyka"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "stanowisko-laboratoryjne-acelab-pc-3000-mobile",
+    "serviceSlug": "informatyka-sledcza",
+    "clusterId": "digital-tech",
+    "name": "Stanowisko laboratoryjne AceLab PC-3000 Mobile",
+    "fullName": "Stanowisko laboratoryjne AceLab PC-3000 Mobile",
+    "manufacturer": "AceLab",
+    "specs": [
+      "odzyskiwanie danych SSD/HDD"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "mostki-blokujace-tableau-tk35u",
+    "serviceSlug": "informatyka-sledcza",
+    "clusterId": "digital-tech",
+    "name": "Mostki blokujące Tableau TK35u",
+    "fullName": "Mostki blokujące Tableau TK35u",
+    "manufacturer": "Tableau",
+    "specs": [
+      "Informatyka"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "automatyczny-analizator-tluszczu-soxtec",
+    "serviceSlug": "laboratorium-srodowiskowe",
+    "clusterId": "society-environment",
+    "name": "Automatyczny analizator tłuszczu Soxtec",
+    "fullName": "Automatyczny analizator tłuszczu Soxtec",
+    "specs": [
+      "analiza tłuszczu"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "system-oznaczania-azotu-i-bialka-kjeltec",
+    "serviceSlug": "laboratorium-srodowiskowe",
+    "clusterId": "society-environment",
+    "name": "System oznaczania azotu i białka Kjeltec",
+    "fullName": "System oznaczania azotu i białka Kjeltec",
+    "specs": [
+      "oznaczanie białka Kjeldahl"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "laboratoryjny-reaktor-mikrofalowy-milestone",
+    "serviceSlug": "laboratorium-srodowiskowe",
+    "clusterId": "society-environment",
+    "name": "Laboratoryjny reaktor mikrofalowy Milestone",
+    "fullName": "Laboratoryjny reaktor mikrofalowy Milestone",
+    "manufacturer": "Milestone",
+    "specs": [
+      "mineralizacja mikrofalowa"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "analizator-elementarny-chns-o-thermo-scientific-flashsmart",
+    "serviceSlug": "laboratorium-srodowiskowe",
+    "clusterId": "society-environment",
+    "name": "Analizator elementarny CHNS-O Thermo Scientific FlashSmart",
+    "fullName": "Analizator elementarny CHNS-O Thermo Scientific FlashSmart",
+    "manufacturer": "Thermo Scientific",
+    "specs": [
+      "analiza CHNS-O"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "miernik-wieloparametrowy-elmetron",
+    "serviceSlug": "laboratorium-srodowiskowe",
+    "clusterId": "society-environment",
+    "name": "Miernik wieloparametrowy Elmetron",
+    "fullName": "Miernik wieloparametrowy Elmetron",
+    "manufacturer": "Elmetron",
+    "specs": [
+      "Laboratorium"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "profesjonalna-aula-audiowizualna-na-126-miejsc",
+    "serviceSlug": "medioznawstwo-i-analizy-ux",
+    "clusterId": "society-environment",
+    "name": "Profesjonalna aula audiowizualna na 126 miejsc",
+    "fullName": "Profesjonalna aula audiowizualna na 126 miejsc",
+    "specs": [
+      "Medioznawstwo"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "zestaw-kamer-studyjnych-4k-sony",
+    "serviceSlug": "medioznawstwo-i-analizy-ux",
+    "clusterId": "society-environment",
+    "name": "Zestaw kamer studyjnych 4K Sony",
+    "fullName": "Zestaw kamer studyjnych 4K Sony",
+    "manufacturer": "Sony",
+    "specs": [
+      "kamery studyjne 4K"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "system-naglosnienia-koncertowego-electro-voice",
+    "serviceSlug": "medioznawstwo-i-analizy-ux",
+    "clusterId": "society-environment",
+    "name": "System nagłośnienia koncertowego Electro-Voice",
+    "fullName": "System nagłośnienia koncertowego Electro-Voice",
+    "manufacturer": "Electro-Voice",
+    "specs": [
+      "nagłośnienie estradowe"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "projektor-laserowy-4k-nec",
+    "serviceSlug": "medioznawstwo-i-analizy-ux",
+    "clusterId": "society-environment",
+    "name": "Projektor laserowy 4K NEC",
+    "fullName": "Projektor laserowy 4K NEC",
+    "manufacturer": "NEC",
+    "specs": [
+      "projekcja laserowa 4K"
+    ],
+    "isFlagship": false
+  },
+  {
+    "slug": "okulograf-stacjonarny-i-mobilny-tobii",
+    "serviceSlug": "medioznawstwo-i-analizy-ux",
+    "clusterId": "society-environment",
+    "name": "Okulograf stacjonarny i mobilny Tobii",
+    "fullName": "Okulograf stacjonarny i mobilny Tobii",
+    "manufacturer": "Tobii",
+    "specs": [
+      "eyetracking / okulografia"
+    ],
+    "isFlagship": false
+  }
+]
