@@ -46,3 +46,6 @@ next-env.d.ts
 *.pdf
 test-results/
 playwright-report/
+
+# regenerated design screenshots
+docs/design/screens/
