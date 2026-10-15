@@ -139,9 +139,55 @@
     "serviceLink": "The service and its experts",
     "sameService": "In the same service"
   },
+  "projects": {
+    "metaDescription": "Research projects run at MCB UKSW: NCN, NAWA and ministry grants and industrial contracts. Principal investigators, funders, budgets and timelines.",
+    "title": "Research projects",
+    "lede": "National grants and industry projects run on the Centre's instruments. {running}, {completed}.",
+    "runningCount": "{n} running",
+    "completedCount": "{n} completed",
+    "statusLabel": "Project status",
+    "running": "Running",
+    "completed": "Completed",
+    "lead": "Principal investigator",
+    "funding": "Funded by",
+    "budget": "Budget",
+    "period": "Timeline",
+    "more": "About the project",
+    "contentNote": "Project titles and descriptions are published in Polish."
+  },
+  "publications": {
+    "metaDescription": "Research papers by MCB UKSW teams, 2021–2025: titanium alloys, metal additive manufacturing, biomaterials. Impact Factor, ministry points and DOI.",
+    "title": "Publications",
+    "lede": "{n} from {from}–{to}, newest first. Each paper lists the journal Impact Factor, Polish ministry (MNiSW) points and a DOI link.",
+    "count": { "one": "{n} publication", "few": "{n} publications", "many": "{n} publications", "other": "{n} publications" },
+    "yearLegend": "Year",
+    "allYears": "All",
+    "impactFactor": "IF",
+    "impactFactorFull": "Impact Factor",
+    "mnisw": "MNiSW",
+    "mniswFull": "MNiSW points",
+    "doi": "DOI",
+    "openDoi": "Open the paper (DOI {doi})",
+    "openUrl": "Open the paper ({host})",
+    "scholar": "Google Scholar",
+    "shown": "Showing: {n}"
+  },
+  "gallery": {
+    "metaDescription": "MCB UKSW gallery: laboratories, research instruments, the CATO computing cluster and 3D prints made at the Centre.",
+    "title": "Gallery",
+    "lede": "The Centre's laboratories and instruments in Dziekanów Leśny. Select a plate to see the full photograph.",
+    "fallbackAlt": "MCB UKSW laboratory, photo {n}",
+    "open": "Enlarge: {label}",
+    "dialogLabel": "Photo viewer",
+    "close": "Close",
+    "prev": "Previous photo",
+    "next": "Next photo",
+    "counter": "{i} of {n}"
+  },
   "notFound": {
     "title": "Page not found",
     "body": "The page you are looking for does not exist or has been moved.",
-    "back": "Back to the homepage"
+    "back": "Back to the homepage",
+    "links": "Useful pages"
   }
 }

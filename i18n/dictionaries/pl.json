@@ -139,9 +139,55 @@
     "serviceLink": "Usługa i jej eksperci",
     "sameService": "W tej samej usłudze"
   },
+  "projects": {
+    "metaDescription": "Projekty badawcze realizowane w MCB UKSW: granty NCN, NAWA i MNiSW oraz zlecenia przemysłowe. Kierownicy, źródła finansowania, budżety i okresy realizacji.",
+    "title": "Projekty badawcze",
+    "lede": "Granty krajowe i projekty z przemysłem prowadzone na aparaturze Centrum. {running}, {completed}.",
+    "runningCount": "{n} w trakcie",
+    "completedCount": "{n} zrealizowanych",
+    "statusLabel": "Status projektu",
+    "running": "W trakcie",
+    "completed": "Zrealizowane",
+    "lead": "Kierownik",
+    "funding": "Finansowanie",
+    "budget": "Budżet",
+    "period": "Okres realizacji",
+    "more": "Opis projektu",
+    "contentNote": ""
+  },
+  "publications": {
+    "metaDescription": "Publikacje naukowe zespołów MCB UKSW z lat 2021–2025: stopy tytanu, wytwarzanie przyrostowe metali, biomateriały. Impact Factor, punkty MNiSW i DOI.",
+    "title": "Publikacje",
+    "lede": "{n} z lat {from}–{to}, uporządkowanych od najnowszych. Przy każdej pracy Impact Factor czasopisma, punkty MNiSW i odnośnik DOI.",
+    "count": { "one": "{n} publikacja", "few": "{n} publikacje", "many": "{n} publikacji", "other": "{n} publikacji" },
+    "yearLegend": "Rok",
+    "allYears": "Wszystkie",
+    "impactFactor": "IF",
+    "impactFactorFull": "Impact Factor",
+    "mnisw": "MNiSW",
+    "mniswFull": "Punkty MNiSW",
+    "doi": "DOI",
+    "openDoi": "Otwórz publikację (DOI {doi})",
+    "openUrl": "Otwórz publikację ({host})",
+    "scholar": "Google Scholar",
+    "shown": "Pokazano: {n}"
+  },
+  "gallery": {
+    "metaDescription": "Galeria MCB UKSW: laboratoria, aparatura badawcza, klaster obliczeniowy CATO i wydruki 3D wykonane w Centrum.",
+    "title": "Galeria",
+    "lede": "Laboratoria i aparatura Centrum w Dziekanowie Leśnym. Kliknij rycinę, aby zobaczyć pełne zdjęcie.",
+    "fallbackAlt": "Laboratorium MCB UKSW, zdjęcie {n}",
+    "open": "Powiększ: {label}",
+    "dialogLabel": "Podgląd zdjęcia",
+    "close": "Zamknij",
+    "prev": "Poprzednie zdjęcie",
+    "next": "Następne zdjęcie",
+    "counter": "{i} z {n}"
+  },
   "notFound": {
     "title": "Nie znaleziono strony",
     "body": "Strona, której szukasz, nie istnieje lub została przeniesiona.",
-    "back": "Wróć na stronę główną"
+    "back": "Wróć na stronę główną",
+    "links": "Przydatne strony"
   }
 }
