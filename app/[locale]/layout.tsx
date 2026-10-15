@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { isLocale, locales } from "@/i18n";
+import { fontVariables } from "../fonts";
 import "../globals.css";
 
 export const dynamicParams = false;
@@ -19,7 +20,7 @@ export default async function RootLayout({
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   return (
-    <html lang={locale}>
+    <html lang={locale} className={fontVariables}>
       <body>{children}</body>
     </html>
   );

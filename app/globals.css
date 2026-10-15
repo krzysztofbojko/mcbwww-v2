@@ -1,1 +1,166 @@
 @import "tailwindcss";
+
+/* MCB UKSW v2 design tokens.
+   Source of truth: docs/design/mockups/tokens.css + docs/design/direction.md.
+   One ground, one ink, one accent, one technical grey. Square corners, no shadows, no gradients. */
+
+@theme {
+  /* Reset scales we do not use so stray utilities (bg-blue-500, rounded-xl, shadow-lg) generate nothing. */
+  --color-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --inset-shadow-*: initial;
+  --drop-shadow-*: initial;
+  --text-shadow-*: initial;
+  --blur-*: initial;
+
+  /* colour */
+  --color-paper: #f4f1eb; /* ground */
+  --color-paper-deep: #e9e4da; /* whole-field tone step, never a card */
+  --color-ink: #1b1917; /* text, footer, path bar */
+  --color-ink-muted: #5a544c; /* secondary text only */
+  --color-ink-subtle: #b9b2a7; /* secondary text on ink fields */
+  --color-rule: #cfc8bb; /* hairlines in tables and datasheets */
+  --color-rule-steel: #bfc6cc; /* hairlines on steel-wash fields */
+  --color-burgundy: #7c1e2d; /* the only strong accent */
+  --color-burgundy-deep: #5c1420; /* hover / pressed */
+  --color-burgundy-tint: #e9cfd2; /* secondary text on burgundy fields */
+  --color-steel: #4f5b66; /* technical values, counts */
+  --color-steel-wash: #dfe3e6; /* datasheet field */
+  --color-steel-light: #9aa6b0; /* counts on ink fields (path bar) */
+  --color-white: #fff;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  /* type scale: at most five visible sizes per page */
+  --text-display-xl: clamp(2.75rem, 6.4vw, 6rem); /* home H1 only */
+  --text-display-xl--line-height: 1.02;
+  --text-display-xl--letter-spacing: -0.025em;
+  --text-display-l: clamp(2.25rem, 4.2vw, 4rem); /* page H1 */
+  --text-display-l--line-height: 1.02;
+  --text-display-l--letter-spacing: -0.025em;
+  --text-display-m: clamp(1.625rem, 2.6vw, 2.5rem); /* section H2 */
+  --text-display-m--line-height: 1.1;
+  --text-display-m--letter-spacing: -0.025em;
+  --text-display-s: clamp(1.5rem, 2.2vw, 2.125rem); /* H3 in index rows, datasheet names */
+  --text-display-s--line-height: 1.08;
+  --text-display-s--letter-spacing: -0.02em;
+  --text-statement: clamp(1.1875rem, 1.6vw, 1.5rem); /* lede */
+  --text-statement--line-height: 1.42;
+  --text-body: 1.0625rem; /* 17px */
+  --text-body--line-height: 1.55;
+  --text-ui: 0.9375rem; /* 15px: nav, buttons, table cells */
+  --text-ui--line-height: 1.45;
+  --text-small: 0.875rem; /* captions, meta */
+  --text-small--line-height: 1.4;
+  --text-spec: 0.875rem; /* mono data */
+  --text-spec--line-height: 1.45;
+
+  --tracking-display: -0.025em;
+  --leading-display: 1.02;
+
+  /* space: Tailwind's 4px base already matches tokens s-1…s-10 (= 1,2,3,4,6,8,12,16,24,36). */
+  --spacing-gutter: clamp(16px, 2.6vw, 40px);
+  --container-site: 1440px;
+
+  /* motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --default-transition-duration: 160ms;
+  --default-transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Families come from next/font CSS variables set on <html> (app/fonts.ts). */
+@theme inline {
+  --font-display: var(--font-brygada), "Iowan Old Style", Georgia, serif;
+  --font-sans: var(--font-schibsted), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+:root {
+  --dur-ui: 160ms;
+  --dur-reveal: 700ms;
+}
+
+/* 12-column grid used by every composition in the mockups. */
+@utility grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: --spacing(4);
+  @media (width >= 48rem) {
+    column-gap: --spacing(6);
+  }
+}
+
+/* Inline technical value: mono, tabular, slashed zero. Data only, never labels. */
+@utility spec {
+  font-family: var(--font-mono);
+  font-size: var(--text-spec);
+  line-height: var(--text-spec--line-height);
+  font-feature-settings: "tnum", "zero";
+  letter-spacing: 0;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scrollbar-color: var(--color-rule) var(--color-paper);
+    color-scheme: light;
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    font-feature-settings: "kern", "liga";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    caret-color: var(--color-burgundy);
+  }
+  ::selection {
+    background: var(--color-burgundy);
+    color: var(--color-paper);
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: var(--tracking-display);
+    text-wrap: balance;
+  }
+  p,
+  li,
+  dd,
+  figcaption {
+    text-wrap: pretty;
+  }
+  /* Links are underlined by default (preflight strips it); index rows and bars opt out with no-underline. */
+  a {
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-burgundy);
+    outline-offset: 3px;
+  }
+  /* On dark fields the burgundy ring would vanish: switch it to paper. */
+  [data-tone="burgundy"] :focus-visible,
+  [data-tone="ink"] :focus-visible {
+    outline-color: var(--color-paper);
+  }
+  [data-tone="burgundy"] ::selection,
+  [data-tone="ink"] ::selection {
+    background: var(--color-paper);
+    color: var(--color-burgundy);
+  }
+  table {
+    font-variant-numeric: tabular-nums;
+  }
+  ::placeholder {
+    color: var(--color-ink-muted);
+    opacity: 1;
+  }
+}
