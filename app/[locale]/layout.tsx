@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getDictionary, isLocale, locales } from "@/i18n";
 import { SiteFooter } from "@/components/sections/SiteFooter";
 import { SiteHeader } from "@/components/sections/SiteHeader";
+import { jsonLdString, organizationJsonLd, siteUrl } from "@/lib/seo";
 import { fontVariables } from "../fonts";
 import "../globals.css";
 
@@ -18,7 +19,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   if (!isLocale(locale)) return {};
   const dict = await getDictionary(locale);
   return {
-    title: { default: dict.site.short, template: `%s · ${dict.site.short}` },
+    metadataBase: new URL(siteUrl()),
+    title: { default: dict.site.short, template: `%s — ${dict.site.short}` },
     description: dict.home.metaDescription,
   };
 }
@@ -42,6 +44,7 @@ export default async function RootLayout({
         >
           {dict.common.skipToContent}
         </a>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdString(organizationJsonLd(locale)) }} />
         <SiteHeader locale={locale} dict={dict} />
         <div className="flex-1">{children}</div>
         <SiteFooter locale={locale} dict={dict} />

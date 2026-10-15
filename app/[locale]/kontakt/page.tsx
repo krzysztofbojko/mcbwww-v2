@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { experts, site } from "@/content";
 import { contactTopics, GENERAL_TOPIC_COUNT } from "@/lib/contact";
+import { pageMetadata } from "@/lib/seo";
 import { getDictionary, isLocale, t } from "@/i18n";
 import { Figure, Heading, Section } from "@/components/ui";
 import { ContactForm, ContactFormFromQuery, type ContactFormProps } from "@/components/sections/ContactForm";
@@ -11,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const dict = await getDictionary(locale);
-  return { title: dict.contact.metaTitle, description: dict.contact.metaDescription };
+  return pageMetadata({ locale, path: "/kontakt", title: dict.contact.metaTitle, description: dict.contact.metaDescription });
 }
 
 /** Mockup 06: building photo across the page, the burgundy field with the form, then every MCB expert. */

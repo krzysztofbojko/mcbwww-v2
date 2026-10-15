@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { galleryAspect, galleryPhotos, galleryRows } from "@/content/gallery";
+import { pageMetadata } from "@/lib/seo";
 import { getDictionary, isLocale, t } from "@/i18n";
 import { arrangeGallery, getGalleryImages } from "@/lib/gallery";
 import { Heading, Section } from "@/components/ui";
@@ -10,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const dict = await getDictionary(locale);
-  return { title: dict.gallery.title, description: dict.gallery.metaDescription };
+  return pageMetadata({ locale, path: "/galeria", title: dict.gallery.title, description: dict.gallery.metaDescription });
 }
 
 export default async function GalleryPage({ params }: { params: Promise<{ locale: string }> }) {

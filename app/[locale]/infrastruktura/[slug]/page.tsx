@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { pageMetadata } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import {
   clusters,
@@ -36,7 +37,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     : item.fullName !== item.name
       ? item.fullName
       : dict.equipment.about.replace("{service}", t(service.title, locale));
-  return { title: item.name, description };
+  return pageMetadata({ locale, path: `/infrastruktura/${item.slug}`, title: item.name, description });
 }
 
 /**

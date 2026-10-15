@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { equipment } from "@/content";
+import { pageMetadata } from "@/lib/seo";
 import { getDictionary, isLocale, plural } from "@/i18n";
 import { Heading, Section } from "@/components/ui";
 import { EquipmentCatalog, EquipmentCatalogFallback } from "@/components/sections/EquipmentCatalog";
@@ -10,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const dict = await getDictionary(locale);
-  return { title: dict.catalog.title, description: dict.catalog.metaDescription };
+  return pageMetadata({ locale, path: "/infrastruktura", title: dict.catalog.title, description: dict.catalog.metaDescription });
 }
 
 export default async function CatalogPage({ params }: { params: Promise<{ locale: string }> }) {

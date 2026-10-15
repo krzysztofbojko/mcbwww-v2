@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { pageMetadata } from "@/lib/seo";
 import { getDictionary, isLocale } from "@/i18n";
 import { Section } from "@/components/ui";
 import { AboutBlock } from "@/components/sections/AboutBlock";
@@ -13,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const dict = await getDictionary(locale);
-  return { title: { absolute: dict.home.metaTitle }, description: dict.home.metaDescription };
+  return pageMetadata({ locale, path: "", title: dict.home.metaTitle, description: dict.home.metaDescription, absoluteTitle: true });
 }
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {

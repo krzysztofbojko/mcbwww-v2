@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { jsonLdString, pageMetadata, serviceJsonLd } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { clusters, equipmentForService, getService, resolveExperts, services } from "@/content";
 import { getDictionary, isLocale, localePath, locales, t } from "@/i18n";
@@ -20,10 +21,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const service = getService(slug);
   if (!isLocale(locale) || !service) return {};
   const cluster = clusters.find((c) => c.id === service.clusterId);
-  return {
+  return pageMetadata({
+    locale,
+    path: `/oferta/${service.slug}`,
     title: t(service.title, locale),
-    description: cluster ? t(cluster.description, locale) : undefined,
-  };
+    description: cluster ? t(cluster.description, locale) : t(service.title, locale),
+  });
 }
 
 export default async function ServicePage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
@@ -38,6 +41,7 @@ export default async function ServicePage({ params }: { params: Promise<{ locale
 
   return (
     <main id="main">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdString(serviceJsonLd(service, locale)) }} />
       <ServiceHeader service={service} cluster={cluster} locale={locale} dict={dict} />
       <ServicePath
         label={dict.service.pathLabel}

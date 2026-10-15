@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { publications } from "@/content";
+import { pageMetadata } from "@/lib/seo";
 import { getDictionary, isLocale, plural } from "@/i18n";
 import { publicationYears } from "@/lib/publications";
 import { Heading, Section } from "@/components/ui";
@@ -10,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   if (!isLocale(locale)) return {};
   const dict = await getDictionary(locale);
-  return { title: dict.publications.title, description: dict.publications.metaDescription };
+  return pageMetadata({ locale, path: "/publikacje", title: dict.publications.title, description: dict.publications.metaDescription });
 }
 
 export default async function PublicationsPage({ params }: { params: Promise<{ locale: string }> }) {

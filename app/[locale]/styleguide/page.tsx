@@ -19,7 +19,7 @@ import {
 } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: "System projektowy · MCB UKSW",
+  title: "System projektowy",
   robots: { index: false, follow: false },
 };
 
