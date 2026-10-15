@@ -147,10 +147,10 @@ export default async function EquipmentPage({ params }: { params: Params }) {
                   />
                   <div className="mt-8">{description}</div>
                 </>
-              ) : (
+              ) : service.image ? (
                 <div className="grid gap-y-8 md:grid-cols-7 md:gap-x-6">
                   <Figure
-                    src={service.image ?? "/images/tlo-glowna.jpg"}
+                    src={service.image}
                     alt={d.plateAlt.replace("{service}", serviceTitle)}
                     number={1}
                     caption={d.plateCaption.replace("{service}", serviceTitle)}
@@ -162,6 +162,9 @@ export default async function EquipmentPage({ params }: { params: Params }) {
                   />
                   <div className="md:col-span-4 md:pt-1">{description}</div>
                 </div>
+              ) : (
+                /* No photograph of the instrument nor of its service: a typographic plate, never a stand-in photo. */
+                <div className="border-t border-ink pt-6">{description}</div>
               )}
             </div>
 

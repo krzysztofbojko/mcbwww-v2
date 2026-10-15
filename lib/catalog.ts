@@ -1,4 +1,4 @@
-import { clusters, getService, type ClusterId, type Equipment } from "@/content";
+import { clusters, getService, type ClusterId, type Equipment } from "@/content/equipment";
 
 /** Catalog filter state. It lives in the query string: ?klaster=&usluga=&usluga=&wiodace=1&q= */
 export interface CatalogFilter {

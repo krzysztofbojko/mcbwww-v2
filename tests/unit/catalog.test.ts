@@ -127,3 +127,15 @@ describe("equipmentPhoto", () => {
     expect(equipmentPhoto("piec-muflowy")).toBeUndefined();
   });
 });
+
+describe("client-safe content module", () => {
+  it("does not import projects, publications or experts (they would ship in the catalog bundle)", async () => {
+    const fs = await import("node:fs");
+    const src = fs.readFileSync("content/equipment.ts", "utf8");
+    const imports = src.split("\n").filter((l) => l.startsWith("import ")).join("\n");
+    expect(imports).not.toMatch(/projects|publications|experts|\.\/index|@\/content"/);
+    for (const f of ["lib/catalog.ts", "components/sections/EquipmentCatalog.tsx"]) {
+      expect(fs.readFileSync(f, "utf8")).not.toMatch(/from "@\/content"/);
+    }
+  });
+});

@@ -13,7 +13,7 @@ import {
   services,
   servicesByCluster,
   type Equipment,
-} from "@/content";
+} from "@/content/equipment";
 import { localePath, plural, t, type Dictionary, type Locale } from "@/i18n";
 import {
   activeFilterCount,
@@ -116,6 +116,14 @@ function CatalogView({
   }, []);
 
   const results = filterEquipment(sorted, filter);
+  const countText = plural(s.items, results.length, locale);
+
+  // The visible count follows every keystroke; screen readers hear it once typing pauses.
+  const [announced, setAnnounced] = useState(countText);
+  useEffect(() => {
+    const id = window.setTimeout(() => setAnnounced(countText), 400);
+    return () => window.clearTimeout(id);
+  }, [countText]);
   const count = activeFilterCount(filter);
   const hasAny = count > 0 || filter.query.trim() !== "";
   const visibleServices = filter.clusterId ? servicesByCluster(filter.clusterId) : services;
@@ -301,8 +309,9 @@ function CatalogView({
                 ))}
               </ul>
             ) : null}
-            <p aria-live="polite" className="m-0 text-ui">
-              {plural(s.items, results.length, locale)}
+            <p className="m-0 text-ui">{countText}</p>
+            <p aria-live="polite" className="sr-only">
+              {announced}
             </p>
             {hasAny && interactive && results.length > 0 ? (
               <button
