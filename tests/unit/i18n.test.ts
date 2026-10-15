@@ -30,6 +30,15 @@ describe("i18n", () => {
     expect(switchLocalePath("/pl", "en")).toBe("/en");
     expect(switchLocalePath("/en/kontakt", "pl")).toBe("/pl/kontakt");
   });
+  it("switchLocalePath keeps the query string and hash", () => {
+    expect(switchLocalePath("/pl/kontakt", "en", "?temat=druk-3d")).toBe("/en/kontakt?temat=druk-3d");
+    expect(switchLocalePath("/pl/kontakt", "en", "temat=druk-3d")).toBe("/en/kontakt?temat=druk-3d");
+    expect(switchLocalePath("/pl/infrastruktura", "en", "?q=ac922&wiodace=1", "#wyniki")).toBe(
+      "/en/infrastruktura?q=ac922&wiodace=1#wyniki",
+    );
+    expect(switchLocalePath("/pl", "en", "", "#top")).toBe("/en#top");
+    expect(switchLocalePath("/pl/kontakt", "en", "?", "#")).toBe("/en/kontakt");
+  });
   it("dictionaries have identical keys", () => {
     expect(Object.keys(flatten(en)).sort()).toEqual(Object.keys(flatten(pl)).sort());
   });

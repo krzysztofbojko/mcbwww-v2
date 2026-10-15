@@ -24,10 +24,16 @@ export function localePath(locale: Locale, path: string): string {
   return `/${locale}${p}`;
 }
 
-export function switchLocalePath(pathname: string, to: Locale): string {
+/**
+ * The same page in another language. `search` („?temat=…”) and `hash` („#ekspert”) are carried over,
+ * so switching language never drops a preselected topic or catalog filter.
+ */
+export function switchLocalePath(pathname: string, to: Locale, search = "", hash = ""): string {
   const [, first, ...rest] = pathname.split("/");
   const tail = first && isLocale(first) ? rest : first ? [first, ...rest] : [];
-  return localePath(to, tail.length ? `/${tail.join("/")}` : "/");
+  const q = search.replace(/^\?/, "");
+  const h = hash.replace(/^#/, "");
+  return `${localePath(to, tail.length ? `/${tail.join("/")}` : "/")}${q ? `?${q}` : ""}${h ? `#${h}` : ""}`;
 }
 
 
